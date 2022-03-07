@@ -1,5 +1,5 @@
-# Cpp_Tutorials
-Tutorials
+### Description
+It was created and presented for all individuals who want to learn C++ A-Z.
 ### Features
 - It will contain all the components in C++;
 - Supported by brief explanations;
