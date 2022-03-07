@@ -36,6 +36,7 @@ public:
 
     //TYPE RELATION
     void is_same();
+    void is_same_Alternative();
     
 };
 #endif

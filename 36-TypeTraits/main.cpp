@@ -15,5 +15,6 @@ int main()
 
   //Type Relation
   typeTraits->is_same();
+  typeTraits->is_same_Alternative();
 
 }
