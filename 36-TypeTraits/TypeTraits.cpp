@@ -71,3 +71,37 @@ void TypeTraits::is_same_Alternative()
     };
     std::cout << "foo and bar is same ? : " << std::is_same<bar, foo>::value << "\n";
 }
+
+// CLASSIC TYPE TRAITS
+void TypeTraits::isIntegral()
+{
+    std::cout << "Is int Integral : " << std::is_integral<int>::value << "\n";     // Prints true.
+    std::cout << "Is char Integral : " << std::is_integral<char>::value << "\n";   // Prints true.
+    std::cout << "Is float Integral : " << std::is_integral<float>::value << "\n"; // Prints false
+}
+
+void TypeTraits::isFloatingPoint()
+{
+    std::cout << "Is float floating : " << std::is_floating_point<float>::value << "\n";   // Prints true.
+    std::cout << "Is double floating : " << std::is_floating_point<double>::value << "\n"; // Prints true.
+    std::cout << "Is char floating : " << std::is_floating_point<char>::value << "\n";     // Prints false.
+}
+
+void TypeTraits::isEnum()
+{
+    enum UAV
+    {
+        TB2,
+        TB3,
+        Anka
+    };
+    enum class Advanced_UAV
+    {
+        Akinci,
+        Aksungur,
+        MQ-1_Predator
+    };
+    std::cout <<"Is Enum" std::is_enum<UAV>::value << "\n";     // Prints true.
+    std::cout <<"Is Enum" std::is_enum<Advanced_UAV>::value << "\n"; // Prints true.
+    std::cout <<"Is int Enum" std::is_enum<int>::value << "\n";       // Prints false
+}
