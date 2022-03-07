@@ -10,3 +10,5 @@ It was created and presented for all individuals who want to learn C++ A-Z.
 - MinGW gcc tool chain is used as a compiler;
 - Settings are available in .vscode/launch file
 - Cpp standard is set as Cpp20
+
+### Test
