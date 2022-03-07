@@ -6,7 +6,7 @@
 #include <functional>
 #include <map>
 #include <vector>
-
+//Author : Burak Dogancay
 /* - Prefer enumerations over macros
 - Use enumerations to represent sets of related named constants
 - Prefer class enums over “plain” enums

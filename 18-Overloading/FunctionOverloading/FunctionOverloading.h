@@ -4,7 +4,7 @@
 #include <iostream>
 #include <cstring>
 #include <functional>
-
+//Author : Burak Dogancay
 //ClassBasics1 is equal to ClassBasics
 /* public Everyone has access
 protected Only the class itself, derived classes and friends have access

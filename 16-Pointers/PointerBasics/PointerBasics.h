@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <functional>
-
+//Author : Burak Dogancay
 
 //Enum and struct also keyword"
 class PointerBasics

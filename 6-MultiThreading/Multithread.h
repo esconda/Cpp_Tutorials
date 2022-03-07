@@ -4,7 +4,7 @@
 #include <atomic>
 #include <Mutex>
 #include <functional>
-
+//Author : Burak Dogancay
 class MultiThread
 {
 public:

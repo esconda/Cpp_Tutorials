@@ -4,7 +4,7 @@
 #include <iostream>
 #include <functional>
 #include "friendcall.h"
-
+//Author : Burak Dogancay
 class FriendClass
 {
 public:

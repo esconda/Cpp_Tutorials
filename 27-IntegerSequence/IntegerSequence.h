@@ -8,7 +8,7 @@
 #include <forward_list>
 #include <tuple>
 #include <utility>
-
+//Author : Burak Dogancay
 
 class IntegerSequence
 {

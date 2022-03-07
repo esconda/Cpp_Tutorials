@@ -6,7 +6,7 @@
 #include <functional>
 #include <map>
 #include <vector>
-
+//Author : Burak Dogancay
 /* 
 -   To use any of std::map or std::multimap the header file <map> should be included.
 -   std::map and std::multimap both keep their elements sorted according to the ascending order of keys. In

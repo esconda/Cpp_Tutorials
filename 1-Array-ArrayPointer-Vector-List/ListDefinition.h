@@ -15,6 +15,7 @@
 #define print(a) std::cout << a
 #define printNewLine(a, b) std::cout << a << b << std::endl
 #pragma pack(push, 1)
+//Author : Burak Dogancay
 //INTERFACE ALL METHODS ARE VIRTUAL,ABSTRACTCLASS
 //INHERITANCE
 //Principal of abstarction , you should make all data members private and provide getter and setter methods

@@ -5,7 +5,7 @@
 #include <cstring>
 #include <functional>
 #include <optional>
-
+//Author : Burak Dogancay
 /*
 std::optional<T> türünden bir nesne, programın çalışma zamanının belirli bir noktasında T türünden bir değer tutuyor ya da tutmuyor durumda olabilir. 
 optional nesnesinin bir değere sahip olması kadar bir değere sahip olmaması da son derece doğal bir durum. Size bir bardak veriliyor. Bardak dolu da olabilir boş da.

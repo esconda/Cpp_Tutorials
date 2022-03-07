@@ -5,7 +5,7 @@
 #include <chrono>
 #include <functional>
 #include <memory>
-
+//Author : Burak Dogancay
 
 class ValueCategories
 {

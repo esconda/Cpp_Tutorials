@@ -3,7 +3,7 @@
 #include <cstring>
 #include <cstddef>
 #include <utility>
-
+//Author : Burak Dogancay
 //Rule of three : destructor, copy constructor, copy assignment
 class RuleOfThree
 {

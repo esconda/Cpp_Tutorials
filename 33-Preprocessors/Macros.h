@@ -1,7 +1,7 @@
 #ifndef MACROS_H 
 #define MACROS_H
-
 #include <iostream>
+//Author : Burak Dogancay
 /* Macros are categorized into two main groups: object-like macros and function-like macros. Macros are treated as a
 token substitution early in the compilation process */
 class Macros

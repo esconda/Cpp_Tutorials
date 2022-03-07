@@ -11,6 +11,7 @@
 #include <any>
 #include <cassert>
 #include <set>
+//Author : Burak Dogancay
 /* 
 This creates a variant (a tagged union) that can store either an int or a string
 Variants guarantee no dynamic memory allocation (other than which is allocated by their contained types). Only

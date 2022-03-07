@@ -1,3 +1,4 @@
+//Author : Burak Dogancay
 //Below implementation macros are called include guards
 /* A header file may be included by other header files. A source file (compilation unit) that includes multiple headers
 may therefore, indirectly, include some headers more than once. If such a header file that is included more than

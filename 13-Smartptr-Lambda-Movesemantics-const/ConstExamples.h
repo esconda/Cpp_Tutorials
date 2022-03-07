@@ -1,6 +1,7 @@
 #ifndef CONSTEXAMPLES_H
 #define CONSTEXAMPLES_H
 #include <iostream>
+//Author : Burak Dogancay
 class ConstExamples{
     public :
         ConstExamples();

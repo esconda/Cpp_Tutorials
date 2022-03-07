@@ -19,7 +19,7 @@
 
 #define printString(a) std::cout<<a<<std::endl
 
-
+//Author : Burak Dogancay
 #include <iostream>
 
 class Example{

@@ -2,7 +2,7 @@
 #define CASTING_H
 #include <iostream>
 #include "math.h"
-
+//Author : Burak Dogancay
 class Casting
 {
 public:

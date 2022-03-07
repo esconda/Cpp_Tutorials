@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <cstdlib>
-
+//Author : Burak Dogancay
 class Mymain{
 
 public:

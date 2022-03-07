@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <chrono>
-
+//Author : Burak Dogancay
 /* 
 A try/catch block is used to catch exceptions. The code in the try section is the code that may throw an exception,
 and the code in the catch clause(s) handles the exception.

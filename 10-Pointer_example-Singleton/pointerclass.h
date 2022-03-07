@@ -1,7 +1,7 @@
 #include <string>
 #include <stdlib.h>
 #include <iostream>
-
+//Author : Burak Dogancay
 class pointerclass
 {
 private:

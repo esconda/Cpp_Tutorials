@@ -1,5 +1,5 @@
 #include <iostream>
-
+//Author : Burak Dogancay
 template<unsigned int n>
 struct factorial
 {

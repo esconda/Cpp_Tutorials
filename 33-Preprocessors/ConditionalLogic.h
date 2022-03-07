@@ -2,6 +2,7 @@
 #define CONDITIONALLOGIC_H
 #define IOSTREAM
 #define WIN32
+//Author : Burak Dogancay
 /* In a nutshell, conditional pre-processing logic is about making code-logic available or unavailable for compilation
 using macro definitions.
 Three prominent use-cases are:

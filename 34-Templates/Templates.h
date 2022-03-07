@@ -2,6 +2,7 @@
 #define TEMPLATES_H
 #include <iostream>
 #include "math.h"
+//Author : Burak Dogancay
 // 1)BASIC CLASS TEMPLATE
 template <typename T>
 class Templates

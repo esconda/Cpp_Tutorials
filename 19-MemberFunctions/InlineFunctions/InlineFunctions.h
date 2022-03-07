@@ -4,7 +4,7 @@
 #include <iostream>
 #include <cstring>
 #include <functional>
-
+//Author : Burak Dogancay
 /* A function defined with the inline specifier is an inline function. An inline function can be multiply defined without
 violating the One Definition Rule, and can therefore be defined in a header with external linkage. Declaring a
 function inline hints to the compiler that the function should be inlined during code generation, but does not

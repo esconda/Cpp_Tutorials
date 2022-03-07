@@ -2,6 +2,7 @@
 #define UAVWINGS_H
 
 #include "UAVBody.h"
+//Author : Burak Dogancay
 //INTERFACE ALL METHODS ARE VIRTUAL,ABSTRACTCLASS
 //INHERITANCE
 //Principal of abstarction , you should make all data members private and provide getter and setter methods

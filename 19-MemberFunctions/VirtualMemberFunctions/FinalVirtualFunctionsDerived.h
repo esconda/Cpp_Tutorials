@@ -6,7 +6,7 @@
 #include <functional>
 #include "FinalVirtualFunctionsBase.h"
 #include "FinalVirtualFunctionsBase.cpp"
-
+//Author : Burak Dogancay
 /* We can also specify that a virtual function is pure virtual(abstract), by appending = 0 to the declaration.Classes with one or more pure virtual functions are 
 considered to be abstract, and cannot be instantiated; only derived
 classes which define, or inherit definitions for, all pure virtual functions can be instantiated. 

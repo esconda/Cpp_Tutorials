@@ -5,6 +5,7 @@
 #include <chrono>
 #include <functional>
 #include <memory>
+//Author : Burak Dogancay
 /* 
 A lambda expression provides a concise way to create simple function objects. A lambda expression is a prvalue
 whose result object is called closure object, which behaves like a function object

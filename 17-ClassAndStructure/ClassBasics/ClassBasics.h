@@ -4,7 +4,7 @@
 #include <iostream>
 #include <cstring>
 #include <functional>
-
+//Author : Burak Dogancay
 struct ClassBasics1
 {
     /* data */

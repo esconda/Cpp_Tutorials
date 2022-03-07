@@ -5,7 +5,7 @@
 #include <vector>
 #include <utility>
 #include <string>
-
+//Author : Burak Dogancay
 template<typename T>
 class myClass
 {

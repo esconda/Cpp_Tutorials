@@ -6,7 +6,7 @@
 #include <functional>
 #include <optional>
 #include <forward_list>
-
+//Author : Burak Dogancay
 /*
 std::forward_list is a container that supports fast insertion and removal of elements from anywhere in the
 container. Fast random access is not supported. It is implemented as a singly-linked list and essentially does not

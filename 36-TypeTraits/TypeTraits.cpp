@@ -36,4 +36,20 @@ void TypeTraits::isVolatile(){
     std::cout <<" Is Volatile Variable : "<<std::is_volatile<decltype(variable)>::value<< std::endl; // Prints true.
     std::cout <<" Is Volatile Variable : "<< std::is_volatile<decltype(variable2)>::value<< std::endl; // Prints false.
 }
+//standard type traıts
+void TypeTraits::isPointer(){
+    unsigned int *variable;
+    unsigned int variable2;
+    static_assert(std::is_pointer<decltype(variable)>::value,"Variable must be pointer");
+    //static_assert(std::is_pointer<decltype(variable2)>::value,"Variable must be pointer");
+}
 
+//Type relations
+void TypeTraits::is_same(){
+    // Prints true on most x86 and x86_64 compilers.
+std::cout <<"int, int32 is same ? : " <<std::is_same<int, int32_t>::value << "\n";
+// Prints false on all compilers.
+std::cout << "float, int is same ? : "<<std::is_same<float, int>::value << "\n";
+// Prints false on all compilers.
+std::cout << "unsigned int, int is same ? : "<<std::is_same<unsigned int, int>::value << "\n";
+}

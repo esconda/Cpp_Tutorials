@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cstring>
 #include <functional>
+//Author : Burak Dogancay
 /* A C++ namespace is a collection of C++ entities (functions, classes, variables), whose names are prefixed by the
 name of the namespace. When writing code within a namespace, named entities belonging to that namespace
 need not be prefixed with the namespace name, but entities outside of it must use the fully qualified name. The

@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <chrono>
-
+//Author : Burak Dogancay
 /* A static data member of the class may be fully defined within the class definition if it is declared inline. For
 example, the following class may be defined in a header. Prior to C++17, it would have been necessary to provide a
 .cpp file to contain the definition of Foo::num_instances so that it would be defined only once, but in C++17 the
