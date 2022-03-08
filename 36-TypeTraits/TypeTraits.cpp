@@ -95,13 +95,15 @@ void TypeTraits::isEnum()
         TB3,
         Anka
     };
-    enum class Advanced_UAV
+
+    enum Advanced_UAV
     {
         Akinci,
         Aksungur,
-        MQ-1_Predator
+        Predator
     };
-    std::cout <<"Is Enum" std::is_enum<UAV>::value << "\n";     // Prints true.
-    std::cout <<"Is Enum" std::is_enum<Advanced_UAV>::value << "\n"; // Prints true.
-    std::cout <<"Is int Enum" std::is_enum<int>::value << "\n";       // Prints false
+
+    std::cout <<"Is Enum : " <<std::is_enum<UAV>::value << "\n";     // Prints true.
+    std::cout <<"Is Enum : " <<std::is_enum<Advanced_UAV>::value << "\n"; // Prints true.
+    std::cout <<"Is int Enum : " <<std::is_enum<int>::value << "\n";       // Prints false
 }

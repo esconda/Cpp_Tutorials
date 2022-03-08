@@ -17,4 +17,9 @@ int main()
   typeTraits->is_same();
   typeTraits->is_same_Alternative();
 
+  //Classic Type Traits
+  typeTraits->isIntegral();
+  typeTraits->isFloatingPoint();
+  typeTraits->isEnum();
+
 }

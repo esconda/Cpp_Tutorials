@@ -37,6 +37,13 @@ public:
     //TYPE RELATION
     void is_same();
     void is_same_Alternative();
+
+    //CLASSIC TYPE TRAITS
+    void isIntegral();
+    void isFloatingPoint();
+    void isEnum();
+    void isPointerEx();
+    void isClass();
     
 };
 #endif
