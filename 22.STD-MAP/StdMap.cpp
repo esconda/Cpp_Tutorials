@@ -31,12 +31,15 @@ void StdMap::iteratorBaseAproach()
                                         std::make_pair(2, "stackexchange")};
 
     auto it = mmp.begin();
+    std::cout<< "------ITERATOR BASE MAP APROACH 1----------"<<std::endl;
     std::cout << it->first << " : " << it->second << std::endl; // Output: "1 : docs-beta"
     it++;
     std::cout << it->first << " : " << it->second << std::endl; // Output: "2 : stackoverflow"
     it++;
     std::cout << it->first << " : " << it->second << std::endl; // Output: "2 : stackexchange"
+    std::cout<<"---------------------------------------"<<std::endl;
 
+    std::cout<< "------ITERATOR BASE MAP APROACH 2----------"<<std::endl;
     // Example using rbegin()
     std::map<int, std::string> mp{std::make_pair(2, "stackoverflow"),
                                   std::make_pair(1, "docs-beta"),
@@ -45,6 +48,7 @@ void StdMap::iteratorBaseAproach()
     std::cout << "R begin" << it2->first << " : " << it2->second << std::endl; // Output: "2 : stackoverflow"
     it2++;
     std::cout << "R begin" << it2->first << " : " << it2->second << std::endl; // Output: "1 : docs-beta"
+    std::cout<<"---------------------------------------"<<std::endl;
 }
 
 void StdMap::insertingElements()

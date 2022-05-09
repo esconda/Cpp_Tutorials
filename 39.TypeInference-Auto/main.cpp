@@ -8,4 +8,5 @@ int main()
 
   //Call Auto Datatype
   typeInference.get()->autoDataType();
+  typeInference.get()->autoLambda();
 }
