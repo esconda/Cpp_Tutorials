@@ -1,3 +1,4 @@
+//Author : Burak Dogancay
 #include "TypeDeduction.h"
 
 TypeDeduction::TypeDeduction()

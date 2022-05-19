@@ -1,9 +1,8 @@
+//Author : Burak Dogancay
 #ifndef TYPETRAITS_H
 #define TYPETRAITS_H
 #include <iostream>
 #include <type_traits>
-
-//Author : Burak Dogancay
 
 /* SFINAE
  C++ C++ language Templates 
