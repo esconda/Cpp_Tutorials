@@ -1,10 +1,11 @@
+//Author : Burak Dogancay
 #ifndef TYPEDEDUCTION_H
 #define TYPEDEDUCTION_H
 #include <iostream>
 #include <vector>
 #include <functional>
 
-//Author : Burak Dogancay
+
 
 
 class TypeDeduction

@@ -85,10 +85,10 @@ void UndefinedBehaviour::accessDanglingReference(){
     //It is illegal to access a reference to an object that has gone out of scope or been otherwise destroyed. Such a
     //reference is said to be dangling since it no longer refers to a valid object.
     int& var = getVar();
-    std::cout << r<<std::endl;
+    std::cout << var<<std::endl;
 
     //In this example, the local variable x goes out of scope when getX returns. (Note that lifetime extension cannot
-    //extend the lifetime of a local variable past the scope of the block in which it is defined.) Therefore r is a dangling
+    //extend the lifetime of a local variable past the scope of the block in which it is defined.) Therefore varr is a dangling
     //reference. This program has undefined behavior, although it may appear to work and print 42 in some cases.
 }
 

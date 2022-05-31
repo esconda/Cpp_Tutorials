@@ -39,22 +39,26 @@ void Macros::variadicFunctionMacro(){
   /*   There are also variadic macros; similarly to variadic functions, these take a variable number of arguments, and then
 expand them all in place of a special "Varargs" parameter, __VA_ARGS__ */
     #define VARIADIC(Param, ...) Param<<__VA_ARGS__<<std::endl
-
     VARIADIC(std::cout,"Variable Number: "<<20);
 }
 
 void Macros::preprocessorOperatorsFirstEx(){
   /*   # operator or stringizing operator is used to convert a Macro parameter to a string literal. It can only be used with
 the Macros having arguments. */
+    std::cout<<"-----STRING DEFINE VARIABLE-----"<<std::endl;
     #define PRINT(x) std::cout<<#x<<std::endl
     PRINT(This line will be converted to string by preprocessor);
+    std::cout<<"--------------------------------"<< std::endl;
 }
 
 void Macros::preprocessorOperatorSecondEX(){
     /* ## operator or Token pasting operator is used to concatenate two parameters or tokens of a Macro. */
+    std::cout<<"-----CONCANATE VARIABLE-----"<<std::endl;
     #define ANOTHERPRINT(x) std::cout<<"variable : "<<variable##x<<std::endl
     int variableY=15;
     ANOTHERPRINT(Y);
+    std::cout<<"----------------------------"<<std::endl;
+
 }
 
 void Macros::preprocessorErrorMessage(){

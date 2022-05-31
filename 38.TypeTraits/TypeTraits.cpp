@@ -1,3 +1,4 @@
+//Author : Burak Dogancay
 #include "TypeTraits.h"
 
 TypeTraits::TypeTraits()

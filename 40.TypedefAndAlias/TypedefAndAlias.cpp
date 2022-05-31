@@ -1,3 +1,4 @@
+//Author : Burak Dogancay
 #include "TypedefAndAlias.h"
 
 TypedefAndAlias::TypedefAndAlias()
