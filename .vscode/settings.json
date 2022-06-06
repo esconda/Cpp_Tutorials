@@ -69,7 +69,8 @@
         "any": "cpp",
         "set": "cpp",
         "ctime": "cpp",
-        "condition_variable": "cpp"
+        "condition_variable": "cpp",
+        "bitset": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
