@@ -4,7 +4,9 @@
 int main()
 {
     StdArray stdArray;
+    StdArray *newStdArray = new StdArray();
     //stdArray.ArrayInitialization();
+    newStdArray->ArrayInitialization();
     stdArray.ArrayInitStruct();
     //stdArray.ElementAccess();
     //stdArray.IteratingThroughArray();
