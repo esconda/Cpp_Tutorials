@@ -36,5 +36,4 @@ void CallableObjects::applyFunctions()
 
     sortVectorInt(intVecVars,lessThanInt);
     sortVectorInt(intVecVars,&GreaterThanInt::cmp);
-
 }
