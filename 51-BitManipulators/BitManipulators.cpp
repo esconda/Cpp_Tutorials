@@ -44,14 +44,33 @@ void BitManipulators::bitsetBitManipulation(){
     std::bitset<8> bitsetVariable{0b0000'0001};
     std::bitset<8> bitsetSet{0x00};
     std::bitset<8> bitsetFlip{0x00};
+    std::bitset<8> bitsetReset{0x00};
 
     bitsetSet = bitsetVariable.set(2); // set bit position to 2 0000 0101
     bitsetFlip = bitsetVariable.flip(0); //flip given position bit
+    bitsetReset = bitsetFlip.reset(0);
 
     std::cout<<"****BitSet Manipulaitons****"<<std::endl;    
-    std::cout<<"Biteset Set Operation : "<< bitsetSet<<std::endl;
-    std::cout<<"Biteset Set Operation : "<< bitsetFlip<<std::endl;
+    std::cout<<"Bitset Set Operation : "<< bitsetSet<<std::endl;
+    std::cout<<"Bitset Flip Operation : "<< bitsetFlip<<std::endl;
+    std::cout<<"Bitset Reset Operation : "<< bitsetReset<<std::endl;
     std::cout<<"**********************************"<<std::endl;
+
+    //test if any bits are on
+    if(bitsetVariable.any()){
+        std::cout<<"Bitset variable some bits are on "<<std::endl;     
+    }
+    else{
+        std::cout<<"Bitset variable all bits are off "<<std::endl; 
+    }
+
+    //test if all bits are on
+    if(bitsetVariable.all()){
+        std::cout<<"Bitset variable all bits are on "<<std::endl;     
+    }
+    else{
+        std::cout<<"Bitset variable some bits are off "<<std::endl; 
+    }
 
 }
 
