@@ -70,7 +70,17 @@
         "set": "cpp",
         "ctime": "cpp",
         "condition_variable": "cpp",
-        "bitset": "cpp"
+        "bitset": "cpp",
+        "iomanip": "cpp",
+        "bit": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "random": "cpp",
+        "numbers": "cpp",
+        "semaphore": "cpp",
+        "stop_token": "cpp",
+        "codecvt": "cpp"
     },
-    "C_Cpp.errorSquiggles": "Disabled"
+    "C_Cpp.errorSquiggles": "disabled",
+    "cmake.sourceDirectory": "${workspaceFolder}/51-JSON_File/jsoncpp"
 }

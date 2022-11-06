@@ -15,6 +15,4 @@ int main()
     lambdaClass.captureByReference();
     lambdaClass.genericLambdas();
     lambdaClass.generilizedCapture();
-
-   
 }

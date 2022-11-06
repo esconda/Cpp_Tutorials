@@ -3,11 +3,12 @@
         {
             "type": "shell",
             "label": "g++.exe build active file",
-            "command": "C:\\MinGW\\bin\\g++.exe",
+            "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
             "args": [
                 "-g",
                 "${fileDirname}\\**.cpp",
                 //"${fileDirname}\\**.h",
+                "-ljsoncpp",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
                 "-std=c++2a"

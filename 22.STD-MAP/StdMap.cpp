@@ -64,22 +64,22 @@ void StdMap::insertingElements()
     mapVariables.insert(std::pair<std::string, size_t>("UGV", 30));
     mapVariables.insert(std::map<std::string, size_t>::value_type("UHV", 50));
 
-    auto success = mapVariables.insert({"UAV", 20});
+    auto success = mapVariables.insert({"stackoverflow", 20});
     if (!success.second)
-    {                                // we already have 'grapes' in the map
+    {                                // we already have 'UAV' in the map
         success.first->second += 20; // access the iterator to update the value
     }
 
     /* For convenience, the std::map container provides the subscript operator to access elements in the map and
 to insert new ones if they don't exist: */
-    mapVariables["UDV"] = 10;
+    mapVariables["UAV"] = 10; //Overwrites value to the available one
     /* While simpler, it prevents the user from checking if the element already exists. If an element is missing,
 std::map::operator[] implicitly creates it, initializing it with the default constructor before overwriting it
 with the supplied value. */
 
     /*insert() can be used to add several elements at once using a braced list of pairs. This version of insert()
     returns void: */
-    mapVariables.insert({{"apricot", 1}, {"jackfruit", 1}, {"lime", 1}, {"mango", 7}});
+    mapVariables.insert({{"UAV", 1}, {"Y", 1}, {"Z", 1}, {"A", 7}});//"insert" does not overwrite to "UAV" 
 
     for (auto &mapVariable : mapVariables)
     {

@@ -1,7 +1,5 @@
 //Author: Burak Doğançay
 #include "CopyEllision.h"
-
-
 int main()
 {
     std::unique_ptr<CopyEllision> copyEllisionClass = std::make_unique<CopyEllision>();
