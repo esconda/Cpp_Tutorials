@@ -7,6 +7,7 @@ ConstExpr::ConstExpr()
 
 void ConstExpr::constExpVariable(){
     /* A variable declared constexpr is implicitly const and its value may be used as a constant expression.
+    constexpr should not be defined inside of class , beacuse it will be created at compile time
     Comparison with #define
     A constexpr is type-safe replacement for #define based compile-time expressions. With constexpr the compiletime evaluated expression is replaced with the result. For example: */
     constexpr int constExprVar = 10 + 2;
@@ -44,7 +45,7 @@ void ConstExpr::constExpVariable(){
     /* All basic types can be initialized with constexpr.
     Version ≥ C++11 */ 
     constexpr bool FailFatal = true;
-    constexpr float PI = 3.14f;
+    constexpr float PI2 = 3.14f;
     constexpr char* site= "StackOverflow";
 
 
@@ -75,7 +76,7 @@ void ConstExpr::constExprFunction(){
         
         */
 
-       Version ≥ C++11
+       //Version ≥ C++11
     constexpr int Sum(int a, int b)
     {
         return a + b;
@@ -100,8 +101,8 @@ void ConstExpr::constExprFunction(){
     arguments, and returning non-constant value. You need not to write two functions. */
 
     //It also means that if you try to assign such call to a non-const variable, it won't compile:
-    int a = 20;
-    constexpr auto sum = Sum(a, abs(-20));
+    int ab = 20;
+    constexpr auto sum = Sum(ab, abs(-20));
 
     /* The reason is simple: constexpr must only be assigned a compile-time constant. However, the above function call
     makes Sum a non-constexpr (R-value is non-const, but L-value is declaring itself to be constexpr). */

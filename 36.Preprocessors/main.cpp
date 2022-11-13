@@ -1,6 +1,7 @@
 #include "IncludeGuards.h"
 #include "IncludeGuards.h"
 #include "ConditionalLogic.h"
+#include "UsefulMacros.h"
 #include "Macros.h"
 
 
@@ -23,4 +24,6 @@ int main()
     macros.preprocessorOperatorsFirstEx();
     macros.preprocessorOperatorSecondEX();
     macros.preprocessorErrorMessage();
+    macros.variableMacro();
+    
 }

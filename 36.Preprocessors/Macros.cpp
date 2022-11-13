@@ -4,6 +4,7 @@ Macros::Macros()
 {
 }
 
+
 void Macros::macroFuncExample(){
     #define PI 3.14
     #define  BAD_AREA(r) PI * r * r
@@ -67,4 +68,9 @@ include, notifying a user if they are on an unsupported platform or an unsupport
 /* #ifndef __APPLE__ 
 #error "Apple product is not suıpported on windows"
 #endif */
+}
+
+void Macros::variableMacro(){
+    mGuards = std::make_unique<IncludeGuards>();
+    GuardClass.get()->checkIncludeGuards();
 }

@@ -14,6 +14,7 @@ public:
     void constExpVariable();
     void staticIfStatement();
     void constExprFunction();
+
 };
 
 #endif

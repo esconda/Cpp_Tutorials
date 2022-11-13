@@ -27,6 +27,8 @@ software) - with slightly different features. */
 #endif
 
 
+
+
 class ConditionalLogic
 {
 public:

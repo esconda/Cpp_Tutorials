@@ -1,0 +1,28 @@
+{
+	"Army Use Area" : "Air Forces",
+	"Company Name" : "Bayraktar, Tai",
+	"Definition" : 
+	[
+		{
+			"ID" : 1,
+			"Name" : "TB2",
+			"Type" : "UAV"
+		},
+		{
+			"ID" : 2,
+			"Name" : "AKINCI",
+			"Type" : "UAV"
+		},
+		{
+			"ID" : 3,
+			"Name" : "AKSUNGUR",
+			"Type" : "UAV"
+		},
+		{
+			"ID" : 4,
+			"Name" : "AKINCI",
+			"Type" : "UAV"
+		}
+	],
+	"Vehicle Types" : "UAV"
+}
