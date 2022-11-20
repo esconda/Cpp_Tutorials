@@ -134,7 +134,23 @@ void SearchAlgorithms::searchAlgorithms(){
     else{
         std::cout<<"There is an items 3 times in vector at index  : "<< std::distance(search_nFirstVec.begin(),search_nIt)<<"  Variable Name : "<< *search_nIt <<std::endl; 
     }
+    printOneLine("--------Default Algoritm result--------");
+    int var =  manualAlgorithm(search_nFirstVec.begin(),search_nFirstVec.end(),30);
+    int var2 =  manualAlgorithm(search_nFirstVec.begin(),search_nFirstVec.end(),100);
+    int var3 =  manualAlgorithm(search_nFirstVec.begin(),search_nFirstVec.end(),55);
+    printTwoLine("The var available at index of vector : ", var);
+    printTwoLine("The var available at index of vector : ", var2);
+    printTwoLine("The var available at index of vector : ", var3);
     //---------------------------------------------------------------------------------- 
+}
 
-
+int SearchAlgorithms::manualAlgorithm(std::vector<int>::iterator begin, std::vector<int>::iterator end,const int &pVar){
+    int var;
+    for(auto i = begin; i!=end; i++){
+        var = (*i == pVar) ? std::distance(begin,i) : -1;
+        if(var >= 0){
+            break;
+        }
+    }
+    return var;
 }
