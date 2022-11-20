@@ -116,7 +116,23 @@ void SearchAlgorithms::searchAlgorithms(){
         std::cout<<"There is no sequence : "<<std::endl;
     }
     else{
-        std::cout<<"There is a sequence  : "<< std::distance(searchFirstVec.begin(),searchIt)<<"  Variable Name : "<< *searchIt <<std::endl; 
+        std::cout<<"There is a sequence start at  : "<< std::distance(searchFirstVec.begin(),searchIt)<<"  Variable Name : "<< *searchIt <<std::endl; 
+    }
+    //---------------------------------------------------------------------------------- 
+
+    //std::search_n()
+    //Used to find out the presence of a subsequence satisfying a condition
+    std::vector<int> search_nFirstVec{20,30,45,55,100,30,30,30};
+    int search_nVal = 30;
+  
+    std::vector<int>::iterator search_nIt = std::search_n(search_nFirstVec.begin(), search_nFirstVec.end(),3,search_nVal); //also you can add conditional precidate
+
+    printOneLine("-------Search_n-----------");
+    if(search_nIt == search_nFirstVec.end()){
+        std::cout<<"There is no items that are available 3 times in vector : "<<std::endl;
+    }
+    else{
+        std::cout<<"There is an items 3 times in vector at index  : "<< std::distance(search_nFirstVec.begin(),search_nIt)<<"  Variable Name : "<< *search_nIt <<std::endl; 
     }
     //---------------------------------------------------------------------------------- 
 
