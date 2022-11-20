@@ -88,20 +88,37 @@ void SearchAlgorithms::searchAlgorithms(){
     }
     //----------------------------------------------------------------------------------
 
-    /* //std::find_end()
-    //Finds the lost subsequence in sequence that matches another sequence or whose elements are equavalent 
-    std::vector<int> findIfNotVec{20,30,45,55};
+    //std::find_end()
+    //Finds the lost subsequence in sequence that matches another sequence or whose elements are equavalent as specified by a predicate
+    std::vector<int> findEndFirstVec{20,30,45,55,100,50,60,40};
+    std::vector<int> findEndSecondVec{20,30,45,55};
   
-    std::vector<int>::iterator findIfNotIt = std::find_if_not(findIfNotVec.begin(), findIfNotVec.end(),[](const auto &i ){
-        return i%2 == 0;
-    });
+    std::vector<int>::iterator findEndIt = std::find_end(findEndFirstVec.begin(), findEndFirstVec.end(),findEndSecondVec.begin(),findEndSecondVec.end());
 
-    printOneLine("-------Find_If_Not-----------");
-    if(findIfNotIt == findIfNotVec.end()){
-        std::cout<<"There are no odd element : "<<std::endl;
+    printOneLine("-------Find_End-----------");
+    if(findEndIt == findEndFirstVec.end()){
+        std::cout<<"There is no sequence : "<<std::endl;
     }
     else{
-        std::cout<<"There is an odd element at : "<< std::distance(findIfNotVec.begin(),findIfNotIt)<<"  Variable Name : "<< *findIfNotIt <<std::endl; 
+        std::cout<<"There is a sequence  : "<< std::distance(findEndFirstVec.begin(),findEndIt)<<"  Variable Name : "<< *findEndIt <<std::endl; 
     }
-    //---------------------------------------------------------------------------------- */
+    //---------------------------------------------------------------------------------- 
+
+    //std::search()
+    //Used to find out the presence of a subsequence satisfying a condition
+    std::vector<int> searchFirstVec{20,30,45,55,100,50,60,40};
+    std::vector<int> searchSecondVec{100,50,60,40};;
+  
+    std::vector<int>::iterator searchIt = std::search(searchFirstVec.begin(), searchFirstVec.end(),searchSecondVec.begin(),searchSecondVec.end()); //also you can add conditional precidate
+
+    printOneLine("-------Search-----------");
+    if(searchIt == searchFirstVec.end()){
+        std::cout<<"There is no sequence : "<<std::endl;
+    }
+    else{
+        std::cout<<"There is a sequence  : "<< std::distance(searchFirstVec.begin(),searchIt)<<"  Variable Name : "<< *searchIt <<std::endl; 
+    }
+    //---------------------------------------------------------------------------------- 
+
+
 }
