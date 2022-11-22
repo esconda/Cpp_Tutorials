@@ -1,6 +1,6 @@
 // Author: Burak Doğançay
-#ifndef SEARCHALGORITHMS_H
-#define SEARCHALGORITHMS_H
+#ifndef SETANDOPERATIONALALGORITHMS_H
+#define SETANDOPERATIONALALGORITHMS_H
 #include <iostream>
 #include <memory>
 #include <algorithm>
@@ -12,19 +12,18 @@
 // An algorithm is a strategy for performing a particular  task such as sorting or searching.These algorithms implemented as function so they work
 // on most of the different container types.ALGORİTHMs are not generally part of the containers.It is necessary in order to support generic programming in the standart library
 //Note that generic algorithms do not wok directly ont he containers .They use intermediate that called an iterator
-class SearchAlgorithms
+class SetAndOperationalAlgorithms
 {
 public:
-    SearchAlgorithms();
-    SearchAlgorithms(int val) = delete;
-    SearchAlgorithms(SearchAlgorithms &&ruleOfFive) noexcept = delete;         //III. MOVE CONSTRUCTOR
-    SearchAlgorithms(const SearchAlgorithms &ruleOfThree) = delete;            // II. COPY CONSTRUCTOR
-    SearchAlgorithms &operator=(const SearchAlgorithms &ruleOfThree) = delete; // III. COPY ASSIGNMENT
-    ~SearchAlgorithms() = default;
+    SetAndOperationalAlgorithms();
+    SetAndOperationalAlgorithms(int val) = delete;
+    SetAndOperationalAlgorithms(SetAndOperationalAlgorithms &&ruleOfFive) noexcept = delete;         //III. MOVE CONSTRUCTOR
+    SetAndOperationalAlgorithms(const SetAndOperationalAlgorithms &ruleOfThree) = delete;            // II. COPY CONSTRUCTOR
+    SetAndOperationalAlgorithms &operator=(const SetAndOperationalAlgorithms &ruleOfThree) = delete; // III. COPY ASSIGNMENT
+    ~SetAndOperationalAlgorithms() = default;
 
-    void searchAlgorithms();
-    int manualAlgorithm(std::vector<int>::iterator begin, std::vector<int>::iterator end,const int &pVar);
-    void binarySearchAlgorithms();
+    void setAlgorithm();
+    void operationalAlgorithm();
 };
 
 #endif

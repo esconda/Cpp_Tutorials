@@ -6,7 +6,7 @@ SearchAlgorithms::SearchAlgorithms()
 }
 
 void SearchAlgorithms::searchAlgorithms(){
- //WE WILL CONSIDER
+    //WE WILL CONSIDER
     //std::adjacent_find, std::find, std::find_if,
     //std::find_first_of, std::find_if_not, std::find_end
     //std::search, std::search_n
@@ -153,4 +153,76 @@ int SearchAlgorithms::manualAlgorithm(std::vector<int>::iterator begin, std::vec
         }
     }
     return var;
+}
+
+void SearchAlgorithms::binarySearchAlgorithms(){
+    //WE WILL CONSIDER
+    //std::lower_bound, std::upper_bound
+    //std::equal_range, std::binary_search
+    
+    //std::lower_bound
+    //Finds the first element in a sequence not less than a given value
+    std::vector<int> lowerBoundVec{20,30,45,55,100,50,60,40};
+    int lowerBoundVal = 35;
+  
+    std::vector<int>::iterator lowerBoundIt = std::lower_bound(lowerBoundVec.begin(), lowerBoundVec.end(),lowerBoundVal);
+
+    printOneLine("-------Lower Bound-----------");
+    if(lowerBoundIt == lowerBoundVec.end()){
+        std::cout<<"There is no sequence : "<<std::endl;
+    }
+    else{
+        std::cout<<"There is a sequence lower and equal start at  : "<< std::distance(lowerBoundVec.begin(),lowerBoundIt)<<"  Variable Name : "<< *lowerBoundIt <<std::endl; 
+    }
+    //---------------------------------------------------------------------------------- 
+
+
+    //std::upper_bound
+    //Finds the first element in a sequence not greater than a given value
+    std::vector<int> upperBoundVec{2,4,8,30,50};
+    int upperBoundVal = 3;
+  
+    std::vector<int>::iterator upperBoundIt = std::upper_bound(upperBoundVec.begin(), upperBoundVec.end(),upperBoundVal); 
+
+    printOneLine("-------Upper Bound-----------");
+    if(upperBoundIt == upperBoundVec.end()){
+        std::cout<<"There is no sequence : "<<std::endl;
+    }
+    else{
+        std::cout<<"There is a sequence greater and equal start at  : "<< std::distance(upperBoundVec.begin(),upperBoundIt)<<"  Variable Name : "<< *upperBoundIt <<std::endl; 
+    }
+    //---------------------------------------------------------------------------------- 
+
+    //std::equal_range
+    //returns the pair containing the result of both lower_bound() and upper_bound() 
+    std::vector<int> equalRangeVec{20,30,45,55,100,50,60,40};
+    int equal_RangeVal = 35;
+  
+    std::vector<int>::iterator equalRangeIt = std::lower_bound(equalRangeVec.begin(), equalRangeVec.end(),equal_RangeVal); 
+
+    printOneLine("-------Equal Range Bound-----------");
+    if(equalRangeIt == equalRangeVec.end()){
+        std::cout<<"There is no sequence : "<<std::endl;
+    }
+    else{
+        std::cout<<"There is a sequence equal start at  : "<< std::distance(equalRangeVec.begin(),equalRangeIt)<<"  Variable Name : "<< *equalRangeIt <<std::endl; 
+    }
+    //---------------------------------------------------------------------------------- 
+
+    //std::binary_search
+    //Returns true if a given value is found in a sequence false otherwise
+    std::vector<int> binary_searchVec{2,8,16,25,36,54};
+    int binary_searchVal = 35;
+  
+    bool binary_searchCond = std::binary_search(binary_searchVec.begin(), binary_searchVec.end(),binary_searchVal); 
+
+    printOneLine("-------Binary Search-----------");
+    if(!binary_searchCond){
+        std::cout<<"There is no sequence : "<<std::endl;
+    }
+    else{
+        std::cout<<"There is a sequence exist in vector"<<std::endl; 
+    }
+    //---------------------------------------------------------------------------------- 
+
 }
