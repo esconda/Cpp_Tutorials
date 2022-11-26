@@ -109,4 +109,29 @@ void SetAndOperationalAlgorithms::setAlgorithm(){
 
 void SetAndOperationalAlgorithms::operationalAlgorithm(){
     //WE WILL CONSIDER
+    //for_each, for_each_n
+    printOneLine("----OPERATIONAL ALGOITHMS----");
+    
+    //std::for_each()
+    printOneLine("-----------for_each-----------");
+    std::vector<int> forEachVec{1,2,3,4,5,6,7,8,9,10};
+    std::for_each(forEachVec.begin(), forEachVec.end(), [](int &n){n++;});// use it with sort
+    for (auto &n: forEachVec){
+        print(n);
+    }
+    printOneLine("");
+    //----------------------------------------------------------------------------------
+    
+    //first	-	the beginning of the range to apply the function to
+    //std::for_each_n()
+    //n	-	the number of elements to apply the function to
+    printOneLine("-----------for_each-----------");
+    std::vector<int> forEachNVec{1,2,3,4,5,6,7,8,9,10};
+    std::for_each_n(forEachNVec.begin(), 5, [](int &n){n*=2;});// use it with sort
+    for (auto &n: forEachNVec){
+        print(n);
+    }
+    printOneLine("");
+    //----------------------------------------------------------------------------------
+
 }

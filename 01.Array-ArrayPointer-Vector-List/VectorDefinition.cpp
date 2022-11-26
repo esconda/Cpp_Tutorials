@@ -140,7 +140,6 @@ crend() – Returns a constant reverse iterator pointing to the theoretical elem
 size() – Returns the number of elements in the vector.
 max_size() – Returns the maximum number of elements that the vector can hold.
 capacity() – Returns the size of the storage space currently allocated to the vector expressed as number of elements.
-             Öğe sayısı olarak ifade edilen vektöre halihazırda ayrılmış depolama alanının boyutunu döndürür.
 resize(n) – Resizes the container so that it contains ‘n’ elements.
 empty() – Returns whether the container is empty.
 shrink_to_fit() – Reduces the capacity of the container to fit its size and destroys all elements beyond the capacity.
@@ -417,4 +416,96 @@ void VectorDefinition::correctWayOfVector()
             std::cout<<"Vector Elements : "<<vectorElement<<std::endl;
         }
     }
+}
+
+void VectorDefinition::copyOpOfTheVector(){
+    std::cout<<"*****COPY PART OF THE VECTOR****"<<std::endl;
+
+    // A loop to copy elements of old vector into new vector by Iterative method 
+    std::cout<<"----IterativeMethode----"<<std::endl;
+    std::vector<int> vectorIter{1,2,3,4,5,6,7};
+    std::vector<int> iteDstVec;
+
+    for (int i=0; i<vectorIter.size(); i++) 
+        iteDstVec.push_back(vectorIter[i]); //Pusdhback Aproach copy elements
+
+    for (int i=0; i<iteDstVec.size(); i++) 
+        std::cout << iteDstVec[i] << " "; 
+    std::cout << std::endl; 
+    std::cout<<"-------------------------------"<<std::endl;
+    //-----------------------------------------------------------------------------------------
+
+    ////////// Using assignment operator to copy one vector to anpther
+    std::cout<<"---- = MemcopyMethode ----"<<std::endl;
+    std::vector<int> vectorMemcpy{1,2,3,4,5,6,7};
+    std::vector<int> memcpyDstVec;
+
+   std::memcpy(memcpyDstVec, &(*vectorMemcpy.begin()),vectorMemcpy.size() * sizeof(int));
+
+    for (int i=0; i<memcpyDstVec.size(); i++) 
+        std::cout << memcpyDstVec[i] << " "; 
+    std::cout << std::endl; 
+    std::cout<<"-------------------------------"<<std::endl;
+    //-----------------------------------------------------------------------------------------
+
+    ////////// Using assignment operator to copy one vector to anpther
+    std::cout<<"---- = AsignmentMethode----"<<std::endl;
+    std::vector<int> vectorAsignment{1,2,3,4,5,6,7};
+    std::vector<int> asignmentDstVec;
+
+    asignmentDstVec = vectorAsignment; //" = " opeartor asignment aproach
+
+    for (int i=0; i<asignmentDstVec.size(); i++) 
+        std::cout << asignmentDstVec[i] << " "; 
+    std::cout << std::endl; 
+    std::cout<<"-------------------------------"<<std::endl;
+    //-----------------------------------------------------------------------------------------
+
+    ////////Passing Vector as Constructor
+    std::cout<<"----Passing Vector as Constructor----"<<std::endl;
+    std::vector<int> vectorConstr{1,2,3,4,5,6,7};
+    std::vector<int> ConstrDstVec(vectorConstr); //Constructor methode deep copy
+
+    for (int i=0; i<ConstrDstVec.size(); i++)
+        std::cout << ConstrDstVec[i] << " "; 
+    std::cout << std::endl; 
+    std::cout<<"-------------------------------"<<std::endl;
+    //-----------------------------------------------------------------------------------------
+
+    ////////std::copy Methode to Copy Elements
+    std::cout<<"----std::copy Methode to Copy Elements----"<<std::endl;
+    std::vector<int> vectorCopy{1,2,3,4,5,6,7};
+    std::vector<int> copyDstVec; 
+
+    std::copy(vectorCopy.begin(),vectorCopy.end()-2,std::back_inserter(copyDstVec));
+    for (int i=0; i<copyDstVec.size(); i++) 
+        std::cout << copyDstVec[i] << " "; 
+    std::cout << std::endl; 
+    std::cout<<"-------------------------------"<<std::endl;
+    //-----------------------------------------------------------------------------------------
+
+    ////////assign Function Methode to Copy Elements
+    std::cout<<"----assign Function Methode to Copy Elements----"<<std::endl;
+    std::vector<int> vectorAssign{1,2,3,4,5,6,7};
+    std::vector<int> assignDstVec; 
+
+    assignDstVec.assign(vectorAssign.begin(),vectorAssign.end());
+    for (int i=0; i<assignDstVec.size(); i++) 
+        std::cout << assignDstVec[i] << " "; 
+    std::cout << std::endl; 
+    std::cout<<"-------------------------------"<<std::endl;
+    //-----------------------------------------------------------------------------------------
+
+    ////////insert Function Methode to Copy Elements
+    std::cout<<"----insert Function Methode to Copy Elements----"<<std::endl;
+    std::vector<int> vectorInsert{1,2,3,4,5,6,7};
+    std::vector<int> insertDstVec; 
+
+    insertDstVec.insert(insertDstVec.begin(),vectorInsert.begin(),vectorInsert.end());
+    for (int i=0; i<insertDstVec.size(); i++) 
+        std::cout << insertDstVec[i] << " "; 
+    std::cout << std::endl; 
+    std::cout<<"-------------------------------"<<std::endl;
+    //-----------------------------------------------------------------------------------------
+    std::cout<<"*******************************"<<std::endl;
 }

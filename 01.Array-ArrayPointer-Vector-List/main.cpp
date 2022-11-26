@@ -17,7 +17,9 @@ int main(){
     //vectorDefinition.vectorAllOperations();
     //vectorDefinition.vectorStructArray();
     //vectorDefinition.vectorClassAproach();
-    vectorDefinition.correctWayOfVector();
+    //vectorDefinition.correctWayOfVector();
+    vectorDefinition.copyOpOfTheVector();
+
     //listDefinition.listTransferOpStruct();
     //listdefinition.listIteratorOp();
     //listdefinition.listDynamicAllocation();

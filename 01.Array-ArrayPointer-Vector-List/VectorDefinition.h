@@ -39,6 +39,7 @@ public:
     void vectorDynamicAllocation();//done
     void vectorClassAproach();
     void correctWayOfVector();
+    void copyOpOfTheVector();
 
 private:
     std::vector<string> mStringVal;
