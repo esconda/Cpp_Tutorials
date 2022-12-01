@@ -1,6 +1,6 @@
 // Author: Burak Doğançay
-#ifndef COMPARISONALGORITHM_H
-#define COMPARISONALGORITHM_H
+#ifndef SWAPANDEXCHANGEALGORITHMS_H
+#define SWAPANDEXCHANGEALGORITHMS_H
 #include <iostream>
 #include <memory>
 #include <algorithm>
@@ -12,17 +12,17 @@
 // An algorithm is a strategy for performing a particular  task such as sorting or searching.These algorithms implemented as function so they work
 // on most of the different container types.ALGORİTHMs are not generally part of the containers.It is necessary in order to support generic programming in the standart library
 //Note that generic algorithms do not wok directly ont he containers .They use intermediate that called an iterator
-class ComparisonAlgorithm
+class SwapAndExchangeAlgorithms
 {
 public:
-    ComparisonAlgorithm();
-    ComparisonAlgorithm(int val) = delete;
-    ComparisonAlgorithm(ComparisonAlgorithm &&ruleOfFive) noexcept = delete;         //III. MOVE CONSTRUCTOR
-    ComparisonAlgorithm(const ComparisonAlgorithm &ruleOfThree) = delete;            // II. COPY CONSTRUCTOR
-    ComparisonAlgorithm &operator=(const ComparisonAlgorithm &ruleOfThree) = delete; // III. COPY ASSIGNMENT
-    ~ComparisonAlgorithm() = default;
+    SwapAndExchangeAlgorithms();
+    SwapAndExchangeAlgorithms(int val) = delete;
+    SwapAndExchangeAlgorithms(SwapAndExchangeAlgorithms &&ruleOfFive) noexcept = delete;         //III. MOVE CONSTRUCTOR
+    SwapAndExchangeAlgorithms(const SwapAndExchangeAlgorithms &ruleOfThree) = delete;            // II. COPY CONSTRUCTOR
+    SwapAndExchangeAlgorithms &operator=(const SwapAndExchangeAlgorithms &ruleOfThree) = delete; // III. COPY ASSIGNMENT
+    ~SwapAndExchangeAlgorithms() = default;
 
-    void comparisonFunc();
+    void swapAndExchangeFunctions();
 };
 
 #endif

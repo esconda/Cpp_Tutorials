@@ -125,7 +125,7 @@ void SetAndOperationalAlgorithms::operationalAlgorithm(){
     //first	-	the beginning of the range to apply the function to
     //std::for_each_n()
     //n	-	the number of elements to apply the function to
-    printOneLine("-----------for_each-----------");
+    printOneLine("-----------for_each_N-----------");
     std::vector<int> forEachNVec{1,2,3,4,5,6,7,8,9,10};
     std::for_each_n(forEachNVec.begin(), 5, [](int &n){n*=2;});// use it with sort
     for (auto &n: forEachNVec){
