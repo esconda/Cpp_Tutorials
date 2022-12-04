@@ -46,7 +46,7 @@ void BitManipulators::bitsetBitManipulation(){
     std::bitset<8> bitsetFlip{0x00};
     std::bitset<8> bitsetReset{0x00};
 
-    bitsetSet = bitsetVariable.set(2); // set bit position to 2 0000 0101
+    bitsetSet = bitsetVariable.set(4); // set bit position to 2 0001 0001
     bitsetFlip = bitsetVariable.flip(0); //flip given position bit
     bitsetReset = bitsetFlip.reset(0);
 
