@@ -25,16 +25,18 @@ public:
 
     struct UAVElements{
         UAVElements(){
+            uavVehicleTypes.reserve(5);
             uavBasicElems.reserve(5);
             uavComplexElems.reserve(5);
             uavAdvanceElems.reserve(5);
             uavOtherElems.reserve(5);
         }
+        std::vector<std::string> uavVehicleTypes;
         std::vector<std::string> uavBasicElems;
         std::vector<std::string> uavComplexElems;
         std::vector<std::string> uavAdvanceElems;
         std::vector<std::string> uavOtherElems;
-    }uavElements;
+    }uavElementsArr;
 
     void init();
     tinyxml2::XMLDocument* getXmlMainDoc() const;

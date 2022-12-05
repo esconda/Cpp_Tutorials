@@ -10,6 +10,4 @@ int main(int argc, char **argv)
   xmlController.get()->init();
   xmlController.get()->openXmlFile(std::filesystem::current_path().string(),"/54-XML_File/test.xml");
   xmlController.get()->uavElementsProcess();
-
-
 }

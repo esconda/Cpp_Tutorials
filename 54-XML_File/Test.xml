@@ -5,17 +5,14 @@
 		<UAVItem id="1" uniqueId="8" name = "Tb3"/>
 		<UAVItem id="2" uniqueId="7" name = "Anka"/>
 	</VehicleType>
-		
-	<VehicleType Id="1" Name="Complex UAV Vehicles">
+	<VehicleType id="1" name="Complex UAV Vehicles">
 		<UAVItem id="0" uniqueId="10" name = "Akinci"/>
 		<UAVItem id="1" uniqueId="9" name = "Aksungur"/>
 	</VehicleType>
-	
-	<VehicleType Id="2" Name="Advanced UAV Vehicles">
+	<VehicleType id="2" name="Advanced UAV Vehicles">
 		<UAVItem id="0" uniqueId="4" name = "KizilElma"/>
 	</VehicleType>
-	
-	<VehicleType Id="3" Name="Other UAV Vehicles">
+	<VehicleType id="3" name="Other UAV Vehicles">
 		<UAVItem id="0" uniqueId="6" name = "Alpagu"/>
 		<UAVItem id="1" uniqueId="6" name = "Alpagut"/>
 		<UAVItem id="1" uniqueId="6" name = "Kargu"/>
