@@ -48,7 +48,7 @@ void XmlController::uavElementsProcess(){
         uavElementsArr.uavVehicleTypes.emplace_back(tUavVehicleType->Attribute("name"));
 
         while(tUavItem){
-            std::cout<<tUavVehicleType->IntAttribute("id")<<std::endl;
+           
             if(tUavVehicleType->IntAttribute("id")==0)
                 uavElementsArr.uavBasicElems.emplace_back(tUavItem->Attribute("name"));
             if(tUavVehicleType->IntAttribute("id")==1)

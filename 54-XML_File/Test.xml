@@ -2,12 +2,12 @@
 <UAVVehicles>
 	<VehicleType id="0" name="Basic UAV Vehicles">
 		<UAVItem id="0" uniqueId="12" name = "Tb2"/>
-		<UAVItem id="1" uniqueId="8" name = "Tb3"/>
-		<UAVItem id="2" uniqueId="7" name = "Anka"/>
+		<UAVItem id="1" uniqueId="7" name = "Anka"/>
 	</VehicleType>
 	<VehicleType id="1" name="Complex UAV Vehicles">
 		<UAVItem id="0" uniqueId="10" name = "Akinci"/>
 		<UAVItem id="1" uniqueId="9" name = "Aksungur"/>
+		<UAVItem id="2" uniqueId="8" name = "Tb3"/>
 	</VehicleType>
 	<VehicleType id="2" name="Advanced UAV Vehicles">
 		<UAVItem id="0" uniqueId="4" name = "KizilElma"/>
