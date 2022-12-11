@@ -18,6 +18,24 @@ tinyxml2::XMLDocument* XmlController::getXmlMainDoc() const{
     return mMainXmlDoc;
 }
 
+tinyxml2::XMLElement* XmlController::getElementWithTagName(tinyxml2::XMLNode * pParent, const std::string &pTagName) const{
+
+    if ( !pParent ) return nullptr;
+
+    tinyxml2::XMLNode * tChild;
+    for ( tChild = pParent->FirstChild(); tChild != 0; tChild = tChild->NextSibling()) 
+    {
+         if(tChild->Value()==pTagName.c_str()){
+            return tChild->ToElement();
+            break;
+        }
+
+        else{
+            getElementWithTagName( tChild, pTagName);
+        }
+    }
+}
+
 bool XmlController::openXmlFile(const std::string &pFolderName, const std::string &pFileName){
     if(mMainXmlDoc == nullptr)
         return false;
@@ -58,7 +76,7 @@ void XmlController::uavElementsProcess(){
             if(tUavVehicleType->IntAttribute("id")==3)
                 uavElementsArr.uavOtherElems.emplace_back(tUavItem->Attribute("name"));
 
-        tUavItem = tUavItem->NextSiblingElement();//Pass to next element
+            tUavItem = tUavItem->NextSiblingElement();//Pass to next element
         }
         
         tUavVehicleType = tUavVehicleType->NextSiblingElement();//pass to next element;
@@ -89,4 +107,76 @@ void XmlController::uavElementsProcess(){
     std::cout<<"------------------------------------"<<std::endl;
 }
 
+const char * XmlController::getIndent(unsigned int pNumOfIndents){
+    static const char * tIndent = "                                      + ";
+    static const unsigned int tLength = strlen( tIndent );
+
+    if ( pNumOfIndents > tLength ) pNumOfIndents = tLength;
+     return &tIndent[ tLength-pNumOfIndents ];
+}
+
+void XmlController::dumpToStdOut(tinyxml2::XMLNode * pParent, unsigned int pIndent = 0){
+    if ( !pParent ) return;
+
+
+    tinyxml2::XMLText *Text;
+    int t = pParent->;
+    printf( "%s", getIndent(pIndent));
+
+    switch ( t )
+    {
+    case tinyxml2::XMLNode::DOCUMENT:
+        printf( "Document" );
+        break;
+
+    case TiXmlNode::ELEMENT:
+        printf( "Element \"%s\"", pParent->Value() );
+        break;
+
+    case TiXmlNode::COMMENT:
+        printf( "Comment: \"%s\"", pParent->Value());
+        break;
+
+    case TiXmlNode::UNKNOWN:
+        printf( "Unknown" );
+        break;
+
+    case TiXmlNode::TEXT:
+        pText = pParent->ToText();
+        printf( "Text: [%s]", pText->Value() );
+        break;
+
+    case TiXmlNode::DECLARATION:
+        printf( "Declaration" );
+        break;
+    default:
+        break;
+    }
+    printf( "\n" );
+
+    tinyxml2::XMLNode * pChild;
+
+    for ( pChild = pParent->FirstChild(); pChild != 0; pChild = pChild->NextSibling()) 
+    {
+        dumpToStdOut( pChild, pIndent+2 );
+    }
+}
+
+void XmlController::load_and_display(){
+     // important for the poetry demo, but you may not need this 
+    // in your own projects
+    tinyxml2::XMLUtil::SkipWhiteSpace( false );
+
+    TiXmlDocument doc( "demo.xml" );
+    bool loadOkay = doc.LoadFile();
+
+    if ( loadOkay )
+    {
+        dump_to_stdout( &doc );
+    }
+    else
+    {
+        printf( "Something went wrong\n" );
+    }
+}
 

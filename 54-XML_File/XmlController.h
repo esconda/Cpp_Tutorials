@@ -40,8 +40,12 @@ public:
 
     void init();
     tinyxml2::XMLDocument* getXmlMainDoc() const;
+    tinyxml2::XMLElement* getElementWithTagName(tinyxml2::XMLNode * pParent, const std::string &pTagName) const;
     bool openXmlFile(const std::string &pFolderName, const std::string &pFileName);
     void uavElementsProcess();
+    const char * getIndent( unsigned int pNumOfIndents);
+    void dumpToStdOut(tinyxml2::XMLNode * pParent, unsigned int pIndent = 0);
+    void load_and_display();
 
 
 private:
