@@ -18,22 +18,48 @@ tinyxml2::XMLDocument* XmlController::getXmlMainDoc() const{
     return mMainXmlDoc;
 }
 
-tinyxml2::XMLElement* XmlController::getElementWithTagName(tinyxml2::XMLNode * pParent, const std::string &pTagName) const{
+tinyxml2::XMLElement* XmlController::getFirstElementWithTagName(tinyxml2::XMLNode * pParent, const std::string &pTagName) const{
+
+    if(mMainXmlDoc == nullptr || mMainXmlDoc->Error())
+        return nullptr;
 
     if ( !pParent ) return nullptr;
 
-    tinyxml2::XMLNode * tChild;
+    tinyxml2::XMLNode *tChild;
     for ( tChild = pParent->FirstChild(); tChild != 0; tChild = tChild->NextSibling()) 
     {
-         if(tChild->Value()==pTagName.c_str()){
-            return tChild->ToElement();
+         if(std::string(tChild->Value()).compare(pTagName.c_str()) == 0 ){
+            specificXmlElements.elmntByTagName = tChild->ToElement();
             break;
         }
-
         else{
-            getElementWithTagName( tChild, pTagName);
+            getFirstElementWithTagName( tChild, pTagName);
         }
     }
+    return specificXmlElements.elmntByTagName;
+}
+tinyxml2::XMLElement* XmlController::getElementWithAttrName(tinyxml2::XMLNode * pParent, const std::string &pAttributeName, const std::string &pAttributeText) const{
+     if(mMainXmlDoc == nullptr || mMainXmlDoc->Error())
+        return nullptr;
+
+    if ( !pParent ) return nullptr;
+
+    tinyxml2::XMLNode *tChild;
+    for ( tChild = pParent->FirstChild(); tChild != 0; tChild = tChild->NextSibling()) 
+    {
+        if(tChild->ToElement()){
+            std::cout<<tChild->ToElement()->Value()<<std::endl;
+            
+            if(tChild->ToElement()->Attribute(pAttributeName.c_str())==pAttributeText.c_str())
+                specificXmlElements.elmntByAttrName = tChild->ToElement();
+                break;
+            }
+            else{
+                getElementWithAttrName( tChild, pAttributeName , pAttributeText);
+            }
+        }
+    }
+    return specificXmlElements.elmntByAttrName;
 }
 
 bool XmlController::openXmlFile(const std::string &pFolderName, const std::string &pFileName){
@@ -46,6 +72,7 @@ bool XmlController::openXmlFile(const std::string &pFolderName, const std::strin
     if(mMainXmlDoc->Error() == true){
         std::cout<<"File Read Error : "<<mMainXmlDoc->ErrorName()<<std::endl;
         std::cout<<"Error Info : "<<mMainXmlDoc->ErrorStr()<<std::endl;
+        std::cout<<"Error Id : " << mMainXmlDoc->ErrorID()<<std::endl;
         std::cout<< "File Name : "<<pFolderName+pFileName<<std::endl;
         return false;
     }
@@ -57,7 +84,8 @@ bool XmlController::openXmlFile(const std::string &pFolderName, const std::strin
 }
 
 void XmlController::uavElementsProcess(){
-    
+    if(mMainXmlDoc == nullptr || mMainXmlDoc->Error())
+        return;
     tinyxml2::XMLElement *tUavVehicles = mMainXmlDoc->FirstChildElement();
     tinyxml2::XMLElement *tUavVehicleType = tUavVehicles->FirstChildElement();
 
@@ -107,76 +135,33 @@ void XmlController::uavElementsProcess(){
     std::cout<<"------------------------------------"<<std::endl;
 }
 
-const char * XmlController::getIndent(unsigned int pNumOfIndents){
-    static const char * tIndent = "                                      + ";
-    static const unsigned int tLength = strlen( tIndent );
+void XmlController::loadAndDisplayAllXml(){
+    if(mMainXmlDoc == nullptr || mMainXmlDoc->Error())
+        return;
 
-    if ( pNumOfIndents > tLength ) pNumOfIndents = tLength;
-     return &tIndent[ tLength-pNumOfIndents ];
+    tinyxml2::XMLPrinter tPrinter;
+    mMainXmlDoc->Accept(&tPrinter);
+    const char* tXmlCstr = tPrinter.CStr();
+    std::cout<<"XML Document Information"<<std::endl;
+    std::cout<<tXmlCstr<<std::endl;
 }
 
-void XmlController::dumpToStdOut(tinyxml2::XMLNode * pParent, unsigned int pIndent = 0){
-    if ( !pParent ) return;
+void XmlController::findElementByTagName(){
+    if(mMainXmlDoc == nullptr || mMainXmlDoc->Error())
+        return;
+    tinyxml2::XMLElement *tElementByTagName =  getFirstElementWithTagName(getXmlMainDoc(),"VehicleType");
 
-
-    tinyxml2::XMLText *Text;
-    int t = pParent->;
-    printf( "%s", getIndent(pIndent));
-
-    switch ( t )
-    {
-    case tinyxml2::XMLNode::DOCUMENT:
-        printf( "Document" );
-        break;
-
-    case TiXmlNode::ELEMENT:
-        printf( "Element \"%s\"", pParent->Value() );
-        break;
-
-    case TiXmlNode::COMMENT:
-        printf( "Comment: \"%s\"", pParent->Value());
-        break;
-
-    case TiXmlNode::UNKNOWN:
-        printf( "Unknown" );
-        break;
-
-    case TiXmlNode::TEXT:
-        pText = pParent->ToText();
-        printf( "Text: [%s]", pText->Value() );
-        break;
-
-    case TiXmlNode::DECLARATION:
-        printf( "Declaration" );
-        break;
-    default:
-        break;
-    }
-    printf( "\n" );
-
-    tinyxml2::XMLNode * pChild;
-
-    for ( pChild = pParent->FirstChild(); pChild != 0; pChild = pChild->NextSibling()) 
-    {
-        dumpToStdOut( pChild, pIndent+2 );
+    while(tElementByTagName){
+        std::cout<< " Element attribute name is : "<<tElementByTagName->Attribute("name")<<std::endl;
+        tElementByTagName = tElementByTagName->NextSiblingElement();
     }
 }
 
-void XmlController::load_and_display(){
-     // important for the poetry demo, but you may not need this 
-    // in your own projects
-    tinyxml2::XMLUtil::SkipWhiteSpace( false );
-
-    TiXmlDocument doc( "demo.xml" );
-    bool loadOkay = doc.LoadFile();
-
-    if ( loadOkay )
-    {
-        dump_to_stdout( &doc );
-    }
-    else
-    {
-        printf( "Something went wrong\n" );
-    }
+void XmlController::findElementByAttrName(){
+    if(mMainXmlDoc == nullptr || mMainXmlDoc->Error())
+        return;
+    tinyxml2::XMLElement *tElementByAttrName =  getElementWithAttrName(getXmlMainDoc(),"name","Advanced UAV Vehicles");
+    if(tElementByAttrName)
+        std::cout<< " Element attribute is : "<<tElementByAttrName->Attribute("id")<<std::endl;
+       
 }
-

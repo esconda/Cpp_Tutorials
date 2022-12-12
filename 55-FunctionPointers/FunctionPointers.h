@@ -12,7 +12,7 @@
 /* A function pointer is a variable that stores the address of a function that can later be called through that function pointer. 
 This is useful because functions encapsulate behavior. For instance, every time you need a particular behavior such as drawing a line, 
 instead of writing out a bunch of code, all you need to do is call the function. 
-But sometimes you would like to choose different behaviors at different times in essentially the same piece of code. Read on for concrete examples. */
+But sometimes you would like to choose different behaviors at different times in essentially the same piece of code.*/
 class FunctionPointers
 {
 public:
