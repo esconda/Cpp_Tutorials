@@ -28,7 +28,7 @@ tinyxml2::XMLElement* XmlController::getFirstElementWithTagName(tinyxml2::XMLNod
     tinyxml2::XMLNode *tChild;
     for ( tChild = pParent->FirstChild(); tChild != 0; tChild = tChild->NextSibling()) 
     {
-         if(std::string(tChild->Value()).compare(pTagName.c_str()) == 0 ){
+        if(std::string(tChild->Value()).compare(pTagName.c_str()) == 0 ){
             specificXmlElements.elmntByTagName = tChild->ToElement();
             break;
         }
@@ -38,8 +38,8 @@ tinyxml2::XMLElement* XmlController::getFirstElementWithTagName(tinyxml2::XMLNod
     }
     return specificXmlElements.elmntByTagName;
 }
-tinyxml2::XMLElement* XmlController::getElementWithAttrName(tinyxml2::XMLNode * pParent, const std::string &pAttributeName, const std::string &pAttributeText) const{
-     if(mMainXmlDoc == nullptr || mMainXmlDoc->Error())
+tinyxml2::XMLElement* XmlController::getElementWithAttrName(tinyxml2::XMLNode * pParent, const char *pAttributeName, const char *pAttributeText) const{
+    if(mMainXmlDoc == nullptr || mMainXmlDoc->Error())
         return nullptr;
 
     if ( !pParent ) return nullptr;
@@ -47,18 +47,16 @@ tinyxml2::XMLElement* XmlController::getElementWithAttrName(tinyxml2::XMLNode * 
     tinyxml2::XMLNode *tChild;
     for ( tChild = pParent->FirstChild(); tChild != 0; tChild = tChild->NextSibling()) 
     {
-        if(tChild->ToElement()){
-            std::cout<<tChild->ToElement()->Value()<<std::endl;
-            
-            if(tChild->ToElement()->Attribute(pAttributeName.c_str())==pAttributeText.c_str())
+        static bool tCond;
+        tCond = tChild->ToElement() && tChild->ToElement()->Attribute(pAttributeName);
+        if(tCond){
+            if(std::string(tChild->ToElement()->Attribute(pAttributeName)).compare(pAttributeText)==0){
                 specificXmlElements.elmntByAttrName = tChild->ToElement();
                 break;
             }
-            else{
-                getElementWithAttrName( tChild, pAttributeName , pAttributeText);
-            }
         }
-    }
+        getElementWithAttrName( tChild, pAttributeName , pAttributeText);    
+    }    
     return specificXmlElements.elmntByAttrName;
 }
 
@@ -161,7 +159,10 @@ void XmlController::findElementByAttrName(){
     if(mMainXmlDoc == nullptr || mMainXmlDoc->Error())
         return;
     tinyxml2::XMLElement *tElementByAttrName =  getElementWithAttrName(getXmlMainDoc(),"name","Advanced UAV Vehicles");
-    if(tElementByAttrName)
-        std::cout<< " Element attribute is : "<<tElementByAttrName->Attribute("id")<<std::endl;
+    tElementByAttrName = tElementByAttrName->FirstChildElement();
+    while(tElementByAttrName){
+        std::cout<< " Element attribute name is : "<<tElementByAttrName->Attribute("name")<<std::endl;
+        tElementByAttrName = tElementByAttrName->NextSiblingElement();
+    }
        
 }

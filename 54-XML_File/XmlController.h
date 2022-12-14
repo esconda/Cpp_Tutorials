@@ -24,7 +24,7 @@ public:
     void init();
     tinyxml2::XMLDocument* getXmlMainDoc() const;
     tinyxml2::XMLElement* getFirstElementWithTagName(tinyxml2::XMLNode * pParent, const std::string &pTagName) const;
-    tinyxml2::XMLElement* getElementWithAttrName(tinyxml2::XMLNode * pParent, const std::string &pAttributeName, const std::string &pAttributeText) const;
+    tinyxml2::XMLElement* getElementWithAttrName(tinyxml2::XMLNode * pParent, const char *pAttributeName, const char *pAttributeText) const;
     bool openXmlFile(const std::string &pFolderName, const std::string &pFileName);
     void uavElementsProcess();
     void loadAndDisplayAllXml();
