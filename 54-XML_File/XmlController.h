@@ -25,11 +25,16 @@ public:
     tinyxml2::XMLDocument* getXmlMainDoc() const;
     tinyxml2::XMLElement* getFirstElementWithTagName(tinyxml2::XMLNode * pParent, const std::string &pTagName) const;
     tinyxml2::XMLElement* getElementWithAttrName(tinyxml2::XMLNode * pParent, const char *pAttributeName, const char *pAttributeText) const;
+    tinyxml2::XMLElement* getNodeByTag(tinyxml2::XMLNode* node, const char * tag);
+    std::vector<tinyxml2::XMLElement*> getNodesByTag(tinyxml2::XMLNode* node, const char * tag);
+    std::vector<tinyxml2::XMLElement*> getChildNodes(tinyxml2::XMLNode* node);
     bool openXmlFile(const std::string &pFolderName, const std::string &pFileName);
     void uavElementsProcess();
     void loadAndDisplayAllXml();
     void findElementByTagName();
     void findElementByAttrName();
+    void findChildNodes();
+    void attributeTypes();
 
 
 private:

@@ -12,4 +12,6 @@ int main(int argc, char **argv)
   xmlController.get()->loadAndDisplayAllXml();
   xmlController.get()->findElementByTagName();
   xmlController.get()->findElementByAttrName();  
+  xmlController.get()->findChildNodes();
+  xmlController.get()->attributeTypes();
 }

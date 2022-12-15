@@ -24,7 +24,7 @@ tinyxml2::XMLElement* XmlController::getFirstElementWithTagName(tinyxml2::XMLNod
         return nullptr;
 
     if ( !pParent ) return nullptr;
-
+    
     tinyxml2::XMLNode *tChild;
     for ( tChild = pParent->FirstChild(); tChild != 0; tChild = tChild->NextSibling()) 
     {
@@ -38,6 +38,7 @@ tinyxml2::XMLElement* XmlController::getFirstElementWithTagName(tinyxml2::XMLNod
     }
     return specificXmlElements.elmntByTagName;
 }
+
 tinyxml2::XMLElement* XmlController::getElementWithAttrName(tinyxml2::XMLNode * pParent, const char *pAttributeName, const char *pAttributeText) const{
     if(mMainXmlDoc == nullptr || mMainXmlDoc->Error())
         return nullptr;
@@ -58,6 +59,61 @@ tinyxml2::XMLElement* XmlController::getElementWithAttrName(tinyxml2::XMLNode * 
         getElementWithAttrName( tChild, pAttributeName , pAttributeText);    
     }    
     return specificXmlElements.elmntByAttrName;
+}
+
+tinyxml2::XMLElement* XmlController::getNodeByTag(tinyxml2::XMLNode* node, const char * tag){
+    std::vector<tinyxml2::XMLElement*> tList = getNodesByTag(node, tag);
+	return tList.size() > 0 ? tList[0] : nullptr;
+}
+
+std::vector<tinyxml2::XMLElement*> XmlController::getNodesByTag(tinyxml2::XMLNode* node, const char * tag){
+     std::vector<tinyxml2::XMLElement*> tList;
+
+	if (node->NoChildren() == true)
+	{
+		return tList;
+	}
+
+	tinyxml2::XMLNode* child = node->FirstChild();
+	do
+	{
+		tinyxml2::XMLElement* tElem = child->ToElement();
+		if (tElem != nullptr)
+		{
+			if (std::string(tElem->Name()) == tag)
+			{
+				tList.push_back(tElem);
+			}
+		}
+
+	} while ((child = child->NextSibling()) != nullptr);
+
+	return tList;
+}
+
+std::vector<tinyxml2::XMLElement*> XmlController::getChildNodes(tinyxml2::XMLNode* node){
+    std::vector<tinyxml2::XMLElement*> list;
+
+	if (node == nullptr)
+	{
+		return list;
+	}
+
+	if (node->NoChildren() == false)
+	{
+		tinyxml2::XMLNode* child = node->FirstChild();
+		do
+		{
+			tinyxml2::XMLElement* elem = child->ToElement();
+			if (elem != nullptr)
+			{
+				list.push_back(elem);
+			}
+
+		} while ((child = child->NextSibling()) != nullptr);
+	}
+
+	return list;
 }
 
 bool XmlController::openXmlFile(const std::string &pFolderName, const std::string &pFileName){
@@ -160,9 +216,39 @@ void XmlController::findElementByAttrName(){
         return;
     tinyxml2::XMLElement *tElementByAttrName =  getElementWithAttrName(getXmlMainDoc(),"name","Advanced UAV Vehicles");
     tElementByAttrName = tElementByAttrName->FirstChildElement();
+    std::cout<<"------------------Get Elements By Attribute--------------"<<std::endl;
     while(tElementByAttrName){
         std::cout<< " Element attribute name is : "<<tElementByAttrName->Attribute("name")<<std::endl;
         tElementByAttrName = tElementByAttrName->NextSiblingElement();
     }
+    std::cout<<"---------------------------------------------------------"<<std::endl;
        
+}
+
+void XmlController::findChildNodes(){
+    if(mMainXmlDoc == nullptr || mMainXmlDoc->Error())
+        return;
+    tinyxml2::XMLElement *tElementByAttrName =  getElementWithAttrName(getXmlMainDoc(),"name","Other UAV Vehicles");
+    std::vector<tinyxml2::XMLElement*> tElementList = getChildNodes(tElementByAttrName);
+    std::cout<<"------------------Get Child Nodes From The List--------------"<<std::endl;
+    for(const auto &Item : tElementList){
+        std::cout<< " Element attribute name is : "<<Item->Attribute("name")<<std::endl;
+    }
+    std::cout<<"---------------------------------------------------------"<<std::endl;
+}
+
+void XmlController::attributeTypes(){
+    if(mMainXmlDoc == nullptr || mMainXmlDoc->Error())
+        return;
+    tinyxml2::XMLElement *tElementByAttribute = getElementWithAttrName(getXmlMainDoc(),"name","Complex UAV Vehicles");
+    tElementByAttribute = tElementByAttribute->FirstChildElement();
+    std::cout<<"------------------Attribute Types--------------"<<std::endl;
+    while(tElementByAttribute){
+        std::cout<<"Int Type Attribute : "<<"Type : "<<typeid(tElementByAttribute->IntAttribute("uniqueId")).name()<< " : Value : "<< tElementByAttribute->IntAttribute("uniqueId")<<std::endl;
+        std::cout<<"String Type Attribute : "<<"Type : "<<typeid(tElementByAttribute->Attribute("uniqueId")).name()<< " : Value : "<< tElementByAttribute->Attribute("uniqueId")<<std::endl;
+        std::cout<<"Int 64 Type Attribute : "<<"Type : "<<typeid(tElementByAttribute->Int64Attribute("uniqueId")).name()<< " : Value : "<< tElementByAttribute->Int64Attribute("uniqueId")<<std::endl;
+        std::cout<<"Bool Type Attribute : "<<"Type : "<<typeid(tElementByAttribute->BoolAttribute("uniqueId")).name()<< " : Value : "<< tElementByAttribute->BoolAttribute("uniqueId")<<std::endl;
+        tElementByAttribute = tElementByAttribute->NextSiblingElement();
+    }
+    std::cout<<"---------------------------------------------------------"<<std::endl;
 }
