@@ -251,8 +251,6 @@ void XmlController::attributeTypes(){
         tElementByAttribute = tElementByAttribute->NextSiblingElement();
     }
     std::cout<<"---------------------------------------------------------"<<std::endl;
-
-    
 }
 
 void XmlController::printXmlHeaders(){
