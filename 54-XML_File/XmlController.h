@@ -35,6 +35,7 @@ public:
     void findElementByAttrName();
     void findChildNodes();
     void attributeTypes();
+    void printXmlHeaders();
 
 
 private:
@@ -54,6 +55,15 @@ private:
         std::vector<std::string> uavAdvanceElems;
         std::vector<std::string> uavOtherElems;
     }uavElementsArr;
+
+    struct XMLHeaders{
+   
+    static constexpr const char* xmlHeader		= { "<?" };
+    static constexpr const char* commentHeader	= { "<!--" };
+    static constexpr const char* cdataHeader		= { "<![CDATA[" };
+    static constexpr const char* dtdHeader		= { "<!" };
+    static constexpr const char* elementHeader	= { "<" };	// and a header for everything else; check last.
+    }xmlHeaders;
 
     struct XmlElements{
         XmlElements(){
