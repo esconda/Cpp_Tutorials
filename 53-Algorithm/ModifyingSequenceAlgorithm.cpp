@@ -261,7 +261,7 @@ void ModifyingSequenceAlgorithm::sampleShuffleFunctions(){
 }
 void ModifyingSequenceAlgorithm::transformFunctions(){
     //WE WILL CONSIDER
-    //std::trasform
+    //std::transform
 }
 
 void ModifyingSequenceAlgorithm::uniqueFunctions(){

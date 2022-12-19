@@ -9,6 +9,7 @@
                 "${fileDirname}\\**.cpp",
                 //"${fileDirname}\\**.h",
                 "-ljsoncpp",
+                "-lsqlite3",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
                 "-std=c++2a"
