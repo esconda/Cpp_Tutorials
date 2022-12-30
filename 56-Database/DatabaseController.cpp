@@ -30,26 +30,49 @@ bool DatabaseController::openDatabase(const std::string &pFilePath, const std::s
 
 void DatabaseController::insertDataToTableProcess(){
     static uavVars uavVariables;
+   
+
+    uavVariables.mId= 5;
+    uavVariables.mName = "Anka";
+    uavVariables.mType = "Uav";
+    uavVariables.mCompany = "Tai";
+    uavVariables.mInfo = "One of the best air vehicle that Tai has developed";
+    uavVariables.mUniqueId = 06;
+
+    std::string tSqlStatement  =  this->sqlQueryVars("INSERT INTO UavTable (Id, Name, Type, Company, Info, UniqueId) VALUES ",
+                                                    quoteInt(uavVariables.mId),quoteString(uavVariables.mName),quoteString(uavVariables.mType),
+                                                    quoteString(uavVariables.mCompany),quoteString(uavVariables.mInfo),quoteInt(uavVariables.mUniqueId));
+    std::cout<<"Sql Statement is : "<<tSqlStatement<<std::endl;
+    this->executeSqlQuery(tSqlStatement,mDataBaseFile);
+}
+
+void DatabaseController::selectAndGetDataTableProcess(){
+    
+}
+
+template <typename Type>
+Type DatabaseController::bindValues(const Type &var){
+    return var;
+}
+template <typename Type,typename... Rest>
+Type DatabaseController::bindValues(const Type &pFirst,const Rest& ...pRestOfVars){
+    static std::string tSqlStatement;
+    tSqlStatement = pFirst + "," + bindValues(pRestOfVars...);
+    return tSqlStatement;
+}
+template <typename Type,typename... Rest>
+std::string DatabaseController::sqlQueryVars(const Type &pMainArg,const Rest& ...pRestOfVars){
+    static std::string tSqlStatement;
+    tSqlStatement = "("+bindValues(pRestOfVars...) +");";
+    tSqlStatement = pMainArg + tSqlStatement;
+    return tSqlStatement;
+}
+
+void DatabaseController::executeSqlQuery(const std::string &pQueryMessage, sqlite3 *pDataBaseFile){
     static int tCheckExecution = 0;
     static char* tMessageError = 0;
 
-    uavVariables.mId= 10;
-    uavVariables.mName = "Akıncı";
-    uavVariables.mType = "Uav";
-    uavVariables.mCompany = "Baykar";
-    uavVariables.mInfo = "One of the best systems Baykar has developed";
-    uavVariables.mUniqueId = 61;
-
-    std::string sqlStatement = "INSERT INTO UavTable (Id, Name, Type, Company, Info, UniqueId) VALUES ("
-    + quoteInt(uavVariables.mId) + ","
-    + quoteString(uavVariables.mName) + ","
-    + quoteString(uavVariables.mType) + ","
-    + quoteString(uavVariables.mCompany) + ","
-    + quoteString(uavVariables.mInfo) + ","
-    + quoteInt(uavVariables.mUniqueId)
-    + ");";
-
-    tCheckExecution = sqlite3_exec(mDataBaseFile,sqlStatement.c_str(),NULL , 0,&tMessageError);
+     tCheckExecution = sqlite3_exec(pDataBaseFile,pQueryMessage.c_str(),NULL , 0,&tMessageError);
 
     if( tCheckExecution != SQLITE_OK ){
         std::cout<<"SQL error:"<<tMessageError<<std::endl;
@@ -59,8 +82,5 @@ void DatabaseController::insertDataToTableProcess(){
         std::cout<<"Records created successfully"<<std::endl;;
     }
     
-    sqlite3_close(mDataBaseFile);
+    sqlite3_close(pDataBaseFile); 
 }
-
-
-

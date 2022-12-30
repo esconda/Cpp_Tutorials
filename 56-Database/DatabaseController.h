@@ -10,10 +10,8 @@
 #define print(a) std::cout << a
 #define printOneLine(a) std::cout << a << std::endl
 #define printTwoLine(a,b) std::cout << a << b << std::endl
-/* A function pointer is a variable that stores the address of a function that can later be called through that function pointer. 
-This is useful because functions encapsulate behavior. For instance, every time you need a particular behavior such as drawing a line, 
-instead of writing out a bunch of code, all you need to do is call the function. 
-But sometimes you would like to choose different behaviors at different times in essentially the same piece of code.*/
+
+/*Sqlite3 Database Controller class to manage given database*/
 class DatabaseController
 {
 public:
@@ -24,31 +22,42 @@ public:
     DatabaseController &operator=(const DatabaseController &ruleOfThree) = delete; // III. COPY ASSIGNMENT
     ~DatabaseController() =default;
 
-    std::string quoteString(const std::string & sqlstr);
-    std::string quoteInt(const int& sqlInt);
+   
     bool openDatabase(const std::string &pFilePath, const std::string &pfileName);
     void insertDataToTableProcess();
+    void selectAndGetDataTableProcess();
+
 
 private:
-typedef struct UavVars{
-    UavVars(){
-        mId = 0;
-        mName = "";
-        mType = "";
-        mCompany = "";
-        mInfo = "";
-        mUniqueId = 0;
-    }
-    int mId;
-    std::string mName;
-    std::string mType;
-    std::string mCompany;
-    std::string mInfo;
-    int mUniqueId;
-}uavVars;
+    typedef struct UavVars{
+        UavVars(){
+            mId = 0;
+            mName = "";
+            mType = "";
+            mCompany = "";
+            mInfo = "";
+            mUniqueId = 0;
+        }
+        int mId;
+        std::string mName;
+        std::string mType;
+        std::string mCompany;
+        std::string mInfo;
+        int mUniqueId;
+    }uavVars;
 
-sqlite3 *mDataBaseFile;
-std::vector<uavVars*> mUavDataCollection;
+    sqlite3 *mDataBaseFile;
+    std::vector<uavVars*> mUavDataCollection;
+
+    std::string quoteString(const std::string & sqlstr);
+    std::string quoteInt(const int& sqlInt);
+    template <typename Type>
+    Type bindValues(const Type& pVar);
+    template <typename Type,typename... Rest>
+    Type bindValues(const Type &pFirst,const Rest& ...pRestOfVars);
+    template <typename Type,typename... Rest>
+    std::string sqlQueryVars(const Type &pMainArg,const Rest& ...pRestOfVars);
+    void executeSqlQuery(const std::string &pQueryMessage, sqlite3 *pDataBaseFile);
 };
 
 #endif
