@@ -1,5 +1,13 @@
 // Author: Burak Doğançay
 #include "DatabaseController.h"
+
+static int dataCallbackFunc(void *data, int dataSize, char **attribute, char **dataColName){
+    for(int i = 0; i<dataSize; i++){
+      std::cout<<dataColName[i]<<"="<<attribute[i]<<std::endl;
+   }
+   return 0;
+}
+
 DatabaseController::DatabaseController()
 {
 
@@ -12,6 +20,7 @@ std::string DatabaseController::quoteString(const std::string & sqlstr){
 std::string DatabaseController::quoteInt(const int& sqlInt){
     return std::to_string(sqlInt);
 }
+
 bool DatabaseController::openDatabase(const std::string &pFilePath, const std::string &pfileName){
     static int tCheckFile = 0;
 
@@ -29,9 +38,8 @@ bool DatabaseController::openDatabase(const std::string &pFilePath, const std::s
 }
 
 void DatabaseController::insertDataToTableProcess(){
+    
     static uavVars uavVariables;
-   
-
     uavVariables.mId= 5;
     uavVariables.mName = "Anka";
     uavVariables.mType = "Uav";
@@ -42,12 +50,18 @@ void DatabaseController::insertDataToTableProcess(){
     std::string tSqlStatement  =  this->sqlQueryVars("INSERT INTO UavTable (Id, Name, Type, Company, Info, UniqueId) VALUES ",
                                                     quoteInt(uavVariables.mId),quoteString(uavVariables.mName),quoteString(uavVariables.mType),
                                                     quoteString(uavVariables.mCompany),quoteString(uavVariables.mInfo),quoteInt(uavVariables.mUniqueId));
-    std::cout<<"Sql Statement is : "<<tSqlStatement<<std::endl;
-    this->executeSqlQuery(tSqlStatement,mDataBaseFile);
+    this->executeSqlQuery(tSqlStatement,mDataBaseFile,NULL);
+    std::cout<<"---------SQL OPERATIONS IS----------"<<std::endl;
+    std::cout<<tSqlStatement<<std::endl;
+    
 }
 
 void DatabaseController::selectAndGetDataTableProcess(){
-    
+
+    std::string tSqlStatement = this->sqlQueryVars("SELECT * FROM UavTable",NULL);
+    this->executeSqlQuery(tSqlStatement,mDataBaseFile,&dataCallbackFunc);
+    std::cout<<"---------SQL OPERATIONS IS----------"<<std::endl;
+    std::cout<<tSqlStatement<<std::endl;
 }
 
 template <typename Type>
@@ -63,16 +77,19 @@ Type DatabaseController::bindValues(const Type &pFirst,const Rest& ...pRestOfVar
 template <typename Type,typename... Rest>
 std::string DatabaseController::sqlQueryVars(const Type &pMainArg,const Rest& ...pRestOfVars){
     static std::string tSqlStatement;
-    tSqlStatement = "("+bindValues(pRestOfVars...) +");";
+    if((sizeof...(pRestOfVars))>1)
+        tSqlStatement = std::string("(").c_str() + bindValues(pRestOfVars...) + std::string(");");
+    else 
+        tSqlStatement= "";
     tSqlStatement = pMainArg + tSqlStatement;
     return tSqlStatement;
 }
 
-void DatabaseController::executeSqlQuery(const std::string &pQueryMessage, sqlite3 *pDataBaseFile){
+void DatabaseController::executeSqlQuery(const std::string &pQueryMessage, sqlite3 *pDataBaseFile, int (*callback)(void *, int, char**,char**)){
     static int tCheckExecution = 0;
     static char* tMessageError = 0;
 
-     tCheckExecution = sqlite3_exec(pDataBaseFile,pQueryMessage.c_str(),NULL , 0,&tMessageError);
+     tCheckExecution = sqlite3_exec(pDataBaseFile,pQueryMessage.c_str(),callback, 0,&tMessageError);
 
     if( tCheckExecution != SQLITE_OK ){
         std::cout<<"SQL error:"<<tMessageError<<std::endl;
@@ -84,3 +101,4 @@ void DatabaseController::executeSqlQuery(const std::string &pQueryMessage, sqlit
     
     sqlite3_close(pDataBaseFile); 
 }
+

@@ -46,6 +46,12 @@ private:
         int mUniqueId;
     }uavVars;
 
+    struct SqlData{
+        int dataSize;
+        char **attribute;
+        char **dataColName;
+    }sqlData;
+
     sqlite3 *mDataBaseFile;
     std::vector<uavVars*> mUavDataCollection;
 
@@ -57,7 +63,7 @@ private:
     Type bindValues(const Type &pFirst,const Rest& ...pRestOfVars);
     template <typename Type,typename... Rest>
     std::string sqlQueryVars(const Type &pMainArg,const Rest& ...pRestOfVars);
-    void executeSqlQuery(const std::string &pQueryMessage, sqlite3 *pDataBaseFile);
+    void executeSqlQuery(const std::string &pQueryMessage, sqlite3 *pDataBaseFile, int (*callback)(void *, int, char**,char**));
 };
 
 #endif
