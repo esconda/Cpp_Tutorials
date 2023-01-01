@@ -2,6 +2,7 @@
 It was created and presented for all individuals who want to learn C++ A-Z.
 ### Features
 - It will contain all the components in C++;
+- Some of the importantant libraries will be added like database, Json, xml etc
 - Supported by brief explanations;
 - Proceeding with practical examples;
 - Supported by different approaches;
