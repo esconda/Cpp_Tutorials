@@ -22,11 +22,21 @@ public:
     DatabaseController &operator=(const DatabaseController &ruleOfThree) = delete; // III. COPY ASSIGNMENT
     ~DatabaseController() =default;
 
-   
+    void setClassInstance(DatabaseController* instance);
+    static DatabaseController *getClassInstance();
     bool openDatabase(const std::string &pFilePath, const std::string &pfileName);
+    void closeDatabase(sqlite3 *pDataBaseFile);
     void insertDataToTableProcess();
     void selectAndGetDataTableProcess();
-
+    void processSqlData();
+    void infoForSqlData();
+    
+    sqlite3 *mDataBaseFile;
+    struct SqlData{
+        int dataSize;
+        char **attribute;
+        char **dataColName;
+    }sqlData;
 
 private:
     typedef struct UavVars{
@@ -45,15 +55,9 @@ private:
         std::string mInfo;
         int mUniqueId;
     }uavVars;
-
-    struct SqlData{
-        int dataSize;
-        char **attribute;
-        char **dataColName;
-    }sqlData;
-
-    sqlite3 *mDataBaseFile;
     std::vector<uavVars*> mUavDataCollection;
+    std::vector<UavVars> mSqlDataVector;
+    static inline DatabaseController *mclassInstance;
 
     std::string quoteString(const std::string & sqlstr);
     std::string quoteInt(const int& sqlInt);
@@ -64,6 +68,7 @@ private:
     template <typename Type,typename... Rest>
     std::string sqlQueryVars(const Type &pMainArg,const Rest& ...pRestOfVars);
     void executeSqlQuery(const std::string &pQueryMessage, sqlite3 *pDataBaseFile, int (*callback)(void *, int, char**,char**));
+    
 };
 
 #endif

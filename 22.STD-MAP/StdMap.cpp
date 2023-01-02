@@ -9,7 +9,6 @@ void StdMap::mapAccessingElements()
 
     std::map<std::string, int> ranking{std::make_pair("stackoverflow", 2),
                                        std::make_pair("docs-beta", 1)};
-
     //Inserting Elements
     ranking["stackoverflow"] = 3;
     ranking["docs-beta"] = 4;

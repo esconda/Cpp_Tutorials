@@ -2,10 +2,11 @@
 #include "DatabaseController.h"
 
 static int dataCallbackFunc(void *data, int dataSize, char **attribute, char **dataColName){
-    for(int i = 0; i<dataSize; i++){
-      std::cout<<dataColName[i]<<"="<<attribute[i]<<std::endl;
-   }
-   return 0;
+    DatabaseController::getClassInstance()->sqlData.dataSize = dataSize;
+    DatabaseController::getClassInstance()->sqlData.attribute = attribute;
+    DatabaseController::getClassInstance()->sqlData.dataColName = dataColName;
+    DatabaseController::getClassInstance()->processSqlData();
+    return 0;
 }
 
 DatabaseController::DatabaseController()
@@ -13,12 +14,14 @@ DatabaseController::DatabaseController()
 
 }
 
-std::string DatabaseController::quoteString(const std::string & sqlstr){
-    return std::string("'") + sqlstr + std::string("'");
+void DatabaseController::setClassInstance(DatabaseController* instance){
+    if(mclassInstance)
+        return;
+    mclassInstance = instance;
 }
 
-std::string DatabaseController::quoteInt(const int& sqlInt){
-    return std::to_string(sqlInt);
+DatabaseController *DatabaseController::getClassInstance(){
+    return mclassInstance;
 }
 
 bool DatabaseController::openDatabase(const std::string &pFilePath, const std::string &pfileName){
@@ -37,6 +40,12 @@ bool DatabaseController::openDatabase(const std::string &pFilePath, const std::s
     }
 }
 
+void DatabaseController::closeDatabase(sqlite3 *pDataBaseFile){
+    if(!mDataBaseFile)
+        return;
+    sqlite3_close(pDataBaseFile); 
+}
+
 void DatabaseController::insertDataToTableProcess(){
     
     static uavVars uavVariables;
@@ -47,6 +56,7 @@ void DatabaseController::insertDataToTableProcess(){
     uavVariables.mInfo = "One of the best air vehicle that Tai has developed";
     uavVariables.mUniqueId = 06;
 
+    
     std::string tSqlStatement  =  this->sqlQueryVars("INSERT INTO UavTable (Id, Name, Type, Company, Info, UniqueId) VALUES ",
                                                     quoteInt(uavVariables.mId),quoteString(uavVariables.mName),quoteString(uavVariables.mType),
                                                     quoteString(uavVariables.mCompany),quoteString(uavVariables.mInfo),quoteInt(uavVariables.mUniqueId));
@@ -62,6 +72,45 @@ void DatabaseController::selectAndGetDataTableProcess(){
     this->executeSqlQuery(tSqlStatement,mDataBaseFile,&dataCallbackFunc);
     std::cout<<"---------SQL OPERATIONS IS----------"<<std::endl;
     std::cout<<tSqlStatement<<std::endl;
+}
+
+void DatabaseController::processSqlData(){
+    UavVars tuavData;
+
+    tuavData.mId = std::atoi(sqlData.attribute[0]);
+    tuavData.mName = sqlData.attribute[1];
+    tuavData.mType = sqlData.attribute[2];
+    tuavData.mCompany = sqlData.attribute[3];
+    tuavData.mInfo = sqlData.attribute[4];
+    tuavData.mUniqueId = std::atoi(sqlData.attribute[5]);
+
+    mSqlDataVector.push_back(tuavData);
+}
+
+void DatabaseController::infoForSqlData(){
+    for (const UavVars &uavVar : mSqlDataVector){
+        static int i= 1;
+        std::cout<<"---New "<<i<<" Data Of The Sql Table---"<<std::endl;
+        std::cout<<"Id: "<<uavVar.mId<<std::endl;
+        std::cout<<"Name:"<<uavVar.mName<<std::endl;
+        std::cout<<"Type:"<<uavVar.mType<<std::endl;
+        std::cout<<"Company:"<<uavVar.mCompany<<std::endl;
+        std::cout<<"Info:"<<uavVar.mInfo<<std::endl;
+        std::cout<<"UniqueId: "<<uavVar.mUniqueId<<std::endl;
+        std::cout<<"------------------------------------"<<std::endl;
+        i++;
+    }
+    mSqlDataVector.clear();
+    std::cout<<"Allocated info of the sql data vector : "<<mSqlDataVector.capacity()<<std::endl;
+    std::cout<<"Current Size of the sql data vector : "<<mSqlDataVector.size()<<std::endl;
+}
+
+std::string DatabaseController::quoteString(const std::string & sqlstr){
+    return std::string("'") + sqlstr + std::string("'");
+}
+
+std::string DatabaseController::quoteInt(const int& sqlInt){
+    return std::to_string(sqlInt);
 }
 
 template <typename Type>
@@ -98,7 +147,7 @@ void DatabaseController::executeSqlQuery(const std::string &pQueryMessage, sqlit
     else {
         std::cout<<"Records created successfully"<<std::endl;;
     }
-    
-    sqlite3_close(pDataBaseFile); 
 }
+
+
 
