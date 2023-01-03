@@ -16,7 +16,14 @@
 This creates a variant (a tagged union) that can store either an int or a string
 Variants guarantee no dynamic memory allocation (other than which is allocated by their contained types). Only
 one of the types in a variant is stored there, and in rare cases (involving exceptions while assigning and no safe way
-to back out) the variant can become empty. */
+to back out) the variant can become empty.
+Variant exists in automatic storage. Any may use the free store; this means any has performance and noexcept(false) issues that variant does not.
+Variant guarantees that it contains one of a list of types (plus valueless by exception). It provides a way for you to guarantee that code operating on it considers every case in the variant with std::visit; even every case for a pair of variants (or more).
+variant is a dressed-up union.
+any cannot store non-copy or non-move able types. variant can.
+In addition to never using additional heap memory, variant has one other advantage: You can std::visit a variant, but not any.
+As with unions, if a variant holds a value of some object type T, the object representation of T is allocated directly within the object representation of the variant itself. Variant is not allowed to allocate additional (dynamic) memory.
+ */
 namespace VariantExample
 {
     class StdVariant
@@ -39,7 +46,8 @@ std::any a0;
 std::any a1 = 42; 
 std::any a2 = month{"October"};
 Like shared_ptr, any remembers how to destroy the contained value for you when the any object is destroyed. 
-Unlike shared_ptr, any also remembers how to copy the contained value and does so when the any object is copied: */
+Unlike shared_ptr, any also remembers how to copy the contained value and does so when the any object is copied:
+any is a dressed-up void*.  */
 
 namespace AnyExample
 {
