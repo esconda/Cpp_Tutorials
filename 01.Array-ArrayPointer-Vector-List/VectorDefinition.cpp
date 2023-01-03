@@ -101,6 +101,61 @@ void VectorDefinition::vectorInitializations()
     }
 }
 
+void VectorDefinition::vectorInitializationAlternative(){
+    //INITIALIZING METHODES
+    std::vector<int> vector1(5,10);// Initialize vector and add items 10 for 5 times
+
+    //Initialize vectors with pushback, push values one by one
+    std::vector<int> vector2;
+    vector2.push_back(20);
+    vector2.push_back(30);
+    vector2.push_back(40);
+
+    //Initializing like arrays
+    std::vector<int> vector3{1,2,3,4,5,6};
+    std::vector<int> vector4 = {10,11,12,13,14};
+    std::vector<int> vector5 = std::vector<int>{20,30,40,50};
+    
+
+    //Initializing with dynamic allocation
+    std::vector<int> *vector6 = new std::vector<int>(5,10);
+
+    vector1.reserve(10);
+    vector2.reserve(5);
+    vector3.reserve(10);
+    vector4.reserve(20);
+    vector5.reserve(10);
+    vector6->reserve(10);
+
+    
+    std::cout<<"-----------VECTOR INITIALIZATION-------------"<<std::endl;
+    std::cout<<"-----------VECTOR1-------------"<<std::endl;
+    for(int &item: vector1){
+        std::cout<<"Vector1 Item"<< item <<std::endl;
+    }
+    std::cout<<"-----------VECTOR2-------------"<<std::endl;
+    for(int &item: vector2){
+        std::cout<<"Vector2 Item"<< item <<std::endl;
+    }
+    std::cout<<"-----------VECTOR3-------------"<<std::endl;
+    for(int &item: vector3){
+        std::cout<<"Vector3 Item"<< item <<std::endl;
+    }
+    std::cout<<"-----------VECTOR4-------------"<<std::endl;
+    for(int &item: vector4){
+        std::cout<<"Vector4 Item"<< item <<std::endl;
+    }
+    std::cout<<"-----------VECTOR5-------------"<<std::endl;
+     for(int &item: vector5){
+        std::cout<<"Vector5 Item"<< item <<std::endl;
+    }
+     std::cout<<"-----------VECTOR6-------------"<<std::endl;
+     for(int &item: *vector6){
+        std::cout<<"Vector6 Item"<< item <<std::endl;
+    }
+    std::cout<<"--------------------------------------------"<<std::endl;
+}
+
 void VectorDefinition::vectorAllOperations()
 {
 

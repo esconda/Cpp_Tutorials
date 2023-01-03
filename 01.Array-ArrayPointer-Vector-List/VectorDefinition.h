@@ -31,6 +31,7 @@ public:
     void vectorManagement();
 
     void vectorInitializations(); //done
+    void vectorInitializationAlternative();
     void vectorAllOperations();   //done
     void vectorIteratorOp(); //done
     void vectorTransferOpStruct();//done
