@@ -15,7 +15,7 @@ DatabaseController::DatabaseController()
 }
 
 void DatabaseController::setClassInstance(DatabaseController* instance){
-    if(mclassInstance)
+    if(mclassInstance == instance)
         return;
     mclassInstance = instance;
 }

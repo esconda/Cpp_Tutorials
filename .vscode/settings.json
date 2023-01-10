@@ -80,7 +80,8 @@
         "semaphore": "cpp",
         "stop_token": "cpp",
         "codecvt": "cpp",
-        "cassert": "cpp"
+        "cassert": "cpp",
+        "future": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled",
     "cmake.sourceDirectory": "${workspaceFolder}/51-JSON_File/jsoncpp"

@@ -55,6 +55,7 @@ private:
         std::string mInfo;
         int mUniqueId;
     }uavVars;
+    
     std::vector<uavVars*> mUavDataCollection;
     std::vector<UavVars> mSqlDataVector;
     static inline DatabaseController *mclassInstance;
