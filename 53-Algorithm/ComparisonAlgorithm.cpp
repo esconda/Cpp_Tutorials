@@ -5,14 +5,16 @@ ComparisonAlgorithm::ComparisonAlgorithm()
 {
 }
 
-void ComparisonAlgorithm::comparisonFunc(){
+void ComparisonAlgorithm::comparisonAlgorithms(){
     //WE WILL CONSIDER
     //std::equal , std::mismatch, std::lexicographical_compose()
-
+    printOneLine(" ");
+    printOneLine(" ");
     printOneLine("----COMPARISON ALGORITHMS----");
 
     //std::Equal
     //Determine if the sequance are equal by checking if parallel elements are equal or watch a predicate
+    //Complexity : O(n)
     std::vector<int> equalVecFirst{1,2,3,4,5,20,30,30,40,50,60};
     std::vector<int> equalVecSecond{1,2,3,4,5,20,25};
     bool var = std::equal(equalVecFirst.begin(), equalVecFirst.begin()+7,equalVecSecond.begin());
@@ -24,10 +26,12 @@ void ComparisonAlgorithm::comparisonFunc(){
     else{
         std::cout<<"There is no equality"<<std::endl; 
     }
+    //OUTPUT: There is no equality
     //----------------------------------------------------------------------------------
 
     //std::mismatch
     //Returns the first element in each sequence that does not match the element in the same locations
+    //Complexity : O(n),
     std::vector<int> mismatchVecFirst{1,2,3,4,5,20};
     std::vector<int> mismatchVecSecond{1,2,3,4,5,20,25};
     std::pair< std::vector<int>::iterator,std::vector<int>::iterator>  mismatchIt = std::mismatch(mismatchVecFirst.begin(), mismatchVecFirst.end(),mismatchVecSecond.begin());
@@ -39,6 +43,9 @@ void ComparisonAlgorithm::comparisonFunc(){
     else{
          std::cout<<"There is a sequence for first vector :"<< std::distance(mismatchVecFirst.begin(),mismatchIt.first) << "  Variable Name : " << *mismatchIt.first <<std::endl; 
          std::cout<<"There is a sequence for second vector : "<< std::distance(mismatchVecSecond.begin(),mismatchIt.second) <<"  Variable Name : " << *mismatchIt.second <<std::endl; 
+        //OUTPUT:
+        //There is a sequence for second vector : 6
+        //VariableName :  25
     }
     //----------------------------------------------------------------------------------
 

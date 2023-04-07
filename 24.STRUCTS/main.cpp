@@ -10,7 +10,7 @@ int main()
     //PACK CONCATANATION
     StructExample::PackConcenationProcess tconcatVariables;
     char pack1 = 0x01;
-	char pack2 = 0x02;
+	char pack2 = 0x04;
     tconcatVariables.clearPackage(tconcatVariables.mSrcPack);
 	tconcatVariables.addPackage(pack1);
 	tconcatVariables.addPackage(pack2);

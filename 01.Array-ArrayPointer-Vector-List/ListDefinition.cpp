@@ -35,7 +35,7 @@ void ListDefinition::listInitializations()
         mStringVal2.push_back(*ite);
     }
 
-    //THIRD WAY****
+    //THIRD WAY****//std::advance fill 
     std::list<string>::iterator itrptr = mStringVal.begin(); //FİLL
     std::advance(itrptr, 3);
 
@@ -56,6 +56,7 @@ void ListDefinition::listInitializations()
     }
 
     //SIXTH WAY
+    //assign() – It assigns new value to the vector elements by replacing old ones
     mStringVal4.assign(10, "Atak");
 
     //PRINT ALLL VECTORS******************

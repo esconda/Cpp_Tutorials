@@ -11,6 +11,7 @@ public:
     ~Mymain();
     //never define static in header file , you expect one instance but it creates two if you create class
     static int staticdefone;
+    static const int myStaticConstVariable = 50;
 
 private:
 

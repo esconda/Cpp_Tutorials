@@ -462,8 +462,8 @@ void VectorDefinition::correctWayOfVector()
         std::cout<<"Capacity after reserve:" << vector.capacity()<<std::endl;
         for (int i = 0; i < 5; i++)
         {
-            vector.emplace_back(20);
-            vector.push_back(20);//Emplace back can be used to get rid of creating copyconstructor and copy it to vector
+            vector.emplace_back(20);//Emplace back can be used to get rid of creating copyconstructor and copy it to vector
+            vector.push_back(20);
         }
 
         for (int &vectorElement : vector)
@@ -490,12 +490,15 @@ void VectorDefinition::copyOpOfTheVector(){
     std::cout<<"-------------------------------"<<std::endl;
     //-----------------------------------------------------------------------------------------
 
-    ////////// Using assignment operator to copy one vector to anpther
+    ////////// Using memcpy function to copy one vector to another
     std::cout<<"---- = MemcopyMethode ----"<<std::endl;
     std::vector<int> vectorMemcpy{1,2,3,4,5,6,7};
     std::vector<int> memcpyDstVec;
+    memcpyDstVec.resize(vectorMemcpy.size());
 
-   std::memcpy(memcpyDstVec, &(*vectorMemcpy.begin()),vectorMemcpy.size() * sizeof(int));
+   //std::memcpy(&memcpyDstVec[0], &(*vectorMemcpy.begin()),vectorMemcpy.size() * sizeof(int));
+   //std::memcpy(std::data(memcpyDstVec), vectorMemcpy.data(),vectorMemcpy.size() * sizeof(int)); //Same as above
+   std::memcpy(memcpyDstVec.data(), vectorMemcpy.data(),vectorMemcpy.size() * sizeof(int)); //Same as above
 
     for (int i=0; i<memcpyDstVec.size(); i++) 
         std::cout << memcpyDstVec[i] << " "; 
@@ -531,8 +534,11 @@ void VectorDefinition::copyOpOfTheVector(){
     std::cout<<"----std::copy Methode to Copy Elements----"<<std::endl;
     std::vector<int> vectorCopy{1,2,3,4,5,6,7};
     std::vector<int> copyDstVec; 
+    copyDstVec.resize(vectorCopy.size());
 
-    std::copy(vectorCopy.begin(),vectorCopy.end()-2,std::back_inserter(copyDstVec));
+    //std::copy(vectorCopy.begin(),vectorCopy.end()-2,std::back_inserter(copyDstVec));
+    std::copy(std::data(vectorCopy), std::data(vectorCopy) + vectorCopy.size(), copyDstVec.begin());
+
     for (int i=0; i<copyDstVec.size(); i++) 
         std::cout << copyDstVec[i] << " "; 
     std::cout << std::endl; 
@@ -545,6 +551,7 @@ void VectorDefinition::copyOpOfTheVector(){
     std::vector<int> assignDstVec; 
 
     assignDstVec.assign(vectorAssign.begin(),vectorAssign.end());
+
     for (int i=0; i<assignDstVec.size(); i++) 
         std::cout << assignDstVec[i] << " "; 
     std::cout << std::endl; 
@@ -557,6 +564,7 @@ void VectorDefinition::copyOpOfTheVector(){
     std::vector<int> insertDstVec; 
 
     insertDstVec.insert(insertDstVec.begin(),vectorInsert.begin(),vectorInsert.end());
+
     for (int i=0; i<insertDstVec.size(); i++) 
         std::cout << insertDstVec[i] << " "; 
     std::cout << std::endl; 

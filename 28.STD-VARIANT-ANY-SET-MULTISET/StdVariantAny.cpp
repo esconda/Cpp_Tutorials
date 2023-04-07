@@ -8,14 +8,14 @@ void VariantExample::StdVariant::variantBasicExample()
 {
 
     std::variant<int, double, std::string> tVariable;
-    tVariable = "Variable is string";
-    std::cout << "Variable type is : " << std::get<std::string>(tVariable) <<" : "<<std::get_if<std::string>(&tVariable)<< std::endl; //std::get<decltype(std::string)> is not working
+    tVariable = "Variant Variable is string";
+    std::cout << "Variant Variable type is : " << std::get<std::string>(tVariable) <<" : "<<std::get_if<std::string>(&tVariable)<< std::endl; //std::get<decltype(std::string)> is not working
 
     tVariable = 42;
-    std::cout << "Variable is : " << std::get<int>(tVariable) << std::endl;
+    std::cout << "Variant Variable is : " << std::get<int>(tVariable) << std::endl;
 
     tVariable = 50.5;
-    std::cout << "Variable is : " << std::get<double>(tVariable) << std::endl;
+    std::cout << "Variant Variable is : " << std::get<double>(tVariable) << std::endl;
 }
 
 AnyExample::StdAny::StdAny()

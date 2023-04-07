@@ -81,7 +81,8 @@
         "stop_token": "cpp",
         "codecvt": "cpp",
         "cassert": "cpp",
-        "future": "cpp"
+        "future": "cpp",
+        "unordered_set": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled",
     "cmake.sourceDirectory": "${workspaceFolder}/51-JSON_File/jsoncpp"

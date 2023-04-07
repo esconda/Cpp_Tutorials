@@ -9,15 +9,7 @@
 #include <memory>
 #include <bitset>
 //Author : Burak Dogancay
-/* - Prefer enumerations over macros
-- Use enumerations to represent sets of related named constants
-- Prefer class enums over “plain” enums
-- Define operations on enumerations for safe and simple use
-- Avoid unnamed enumerations
-- Specify the underlying type of an enumeration only when necessary
-    *The default is the easiest to read and write. int is the default integer type. int is compatible with C enums.
-- Specify enumerator values only when necessary 
-*/
+
 class StructExample
 {
 public:

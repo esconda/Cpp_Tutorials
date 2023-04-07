@@ -15,6 +15,7 @@ void SearchAlgorithms::searchAlgorithms(){
     printOneLine("----SEARCH ALGORITHMS----");
     //std::adjacent_find
     //Finds the first instance of the two consecitive elements that are equal to the eachother or are equavalent to eachother as specified by a predicate 
+    //COMPEXITY : O(last - first)
     std::vector<int>::iterator adjacentIt = std::adjacent_find(searchVec.begin(), searchVec.end());
 
     printOneLine("-------Adjacent Find-----------");
@@ -24,10 +25,12 @@ void SearchAlgorithms::searchAlgorithms(){
     else{
         std::cout<<"There are adjacent equal number at : "<< std::distance(searchVec.begin(),adjacentIt)<<"  Variable Name : "<< *adjacentIt <<std::endl; 
     }
+    //OUTPUT : There are adjacent equal number at : 6  Variable Name : 30
     //----------------------------------------------------------------------------------
 
     //std::find
     //Finds the first element that causes a predicate toreturn false
+    //COMPEXITY : O(last - first)
     int findVal = 5;
     std::vector<int>::iterator findIt = std::find(searchVec.begin(), searchVec.end(), findVal);
 
@@ -38,10 +41,12 @@ void SearchAlgorithms::searchAlgorithms(){
     else{
         std::cout<<"There are adjacent equal number at : "<< std::distance(searchVec.begin(),findIt)<<"  Variable Name : "<< *findIt <<std::endl; 
     }
+    //OUTPUT: There are adjacent equal number at : 4  Variable Name : 5
     //----------------------------------------------------------------------------------
 
     //std::find_if
     //Finds the first element that causes a predicate toreturn false
+    //COMPEXITY : O(last - first)
     int findIfVal = 5;
     std::vector<int>::iterator findIfIt = std::find_if(searchVec.begin(), searchVec.end(),[](const auto &i){
         return i % 2 == 0;
@@ -54,10 +59,12 @@ void SearchAlgorithms::searchAlgorithms(){
     else{
         std::cout<<"There is even number at : "<< std::distance(searchVec.begin(),findIfIt)<<"  Variable Name : "<< *findIfIt <<std::endl; 
     }
+    // OUTPUT: There is even number at : 1  Variable Name : 2
     //----------------------------------------------------------------------------------
 
     //std::find_first_of()
     //Like find but searches for one of several elements at the same time
+    //COMPEXITY : O(last - first)
     std::vector<int> firstVec{20,30,40,50};
     std::vector<int> secondVec{2,5,30,10};
     std::vector<int>::iterator findFirstOfIt = std::find_first_of(firstVec.begin(), firstVec.end(),secondVec.begin(),secondVec.end());
@@ -69,6 +76,7 @@ void SearchAlgorithms::searchAlgorithms(){
     else{
         std::cout<<"There are same elements at : "<< std::distance(firstVec.begin(),findFirstOfIt)<<"  Variable Name : "<< *findFirstOfIt <<std::endl; 
     }
+    // OUTPUT : There are same elements at : 1  Variable Name : 30
     //----------------------------------------------------------------------------------
 
     //std::find_if_not()

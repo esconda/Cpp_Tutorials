@@ -22,7 +22,7 @@ int main()
     mSearchAlgorithm.get()->binarySearchAlgorithms();
     mSetAndOpAlgorithm.get()->setAlgorithm();
     mSetAndOpAlgorithm.get()->operationalAlgorithm();
-    //mComparisonAlgorithms.get()->comparisonAlgorithms();
+    mComparisonAlgorithms.get()->comparisonAlgorithms();
     mModifyingAlgorithms.get()->copyFunctions();
     mModifyingAlgorithms.get()->fillFunctions();
     mModifyingAlgorithms.get()->generateFunctions();
@@ -32,5 +32,5 @@ int main()
 
     mSwapAndExchangeAlgorithm.get()->swapAndExchangeFunctions();
     mSortingAlgorithms.get()->sortingFunction();
-
+   
 }

@@ -22,7 +22,7 @@ public:
     ComparisonAlgorithm &operator=(const ComparisonAlgorithm &ruleOfThree) = delete; // III. COPY ASSIGNMENT
     ~ComparisonAlgorithm() = default;
 
-    void comparisonFunc();
+    void comparisonAlgorithms();
 };
 
 #endif

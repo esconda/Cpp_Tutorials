@@ -8,10 +8,12 @@
 #ifndef HEIGHT
 #define HEIGHT 1080
 #endif
+
 /* 
 #ifdef HEIGHT
 #define DEFINED 1
 #endif */
+
 
 #if DEFINED
 #define RECT 50

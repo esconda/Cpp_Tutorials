@@ -73,18 +73,24 @@ void CountingAlgorithm::countingAlgortihms(){
         printOneLine("--------------Counting Even Vector------------------");
         printOneLine("All numbers are even");
     }
+    //OUTPUT: All numbers are even
+    //Complexity : O(n)
 
     //Returns true if the predicate returns false for all the elements in the same sequence or if the sequence is empty , false otherwise
     if(std::none_of(countingOddVec.begin(),countingOddVec.end(),[](int i){return  i % 2 ==0;})){
         printOneLine("--------------Counting Odd Vector------------------");
         printOneLine("All numbers are odd");
     }
+    //OUTPUT: All numbers are odd
+    //Complexity : O(n)
 
     //Returns true if the predicate returns true for at least one element in the sequence , false otherwise
     if(std::any_of(countingEvenVec.begin(),countingEvenVec.end(),[](int i){return  i % 2 ==0;})){
         printOneLine("--------------Counting Any Even Vector------------------");
         printOneLine("Some numbers are even");
     }
+    //OUTPUT: Some numbers are even
+    //Complexity : O(n)
     //----------------------------------------------------------------------------------
 
     //Hash Map example of any of
@@ -97,10 +103,13 @@ void CountingAlgorithm::countingAlgortihms(){
         printOneLine("--------------Counting Any Even Map------------------");
         printOneLine("Some parameters are true");
     }
+     //OUTPUT: Some parameters are true
+    //Complexity : O(n)
    //----------------------------------------------------------------------------------
 
     //Counts the nuber of elements matching a value or that cause a predicate return true
     //std::count example
+    //complexity: o(n)+o(1)
     std::vector<int> countingVec{30,30,30,40,50,60};
     int countNum;
     int target = 30;
@@ -108,6 +117,7 @@ void CountingAlgorithm::countingAlgortihms(){
 
     printOneLine("-------Counting Count Vector-----------");
     printTwoLine("How many target (30) items are available : ", countNum);
+    //OUTPUT: How many target (30) items are available : 3
     //----------------------------------------------------------------------------------
 
     //std::count_if example
@@ -119,5 +129,6 @@ void CountingAlgorithm::countingAlgortihms(){
 
     printOneLine("-------Counting Count_if Vector-----------");
     printTwoLine("How many vector items are divided by 15: ", countifNum);
+    //OUTPUT: How many vector items are divided by 15: 4
     //----------------------------------------------------------------------------------
 }
