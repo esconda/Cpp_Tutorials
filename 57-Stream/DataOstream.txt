@@ -1,0 +1,6 @@
+Name : Burak
+Surname : Dogancay
+Age : 25
+City : Istanbul
+Country : Turkey
+PostCode : 34678

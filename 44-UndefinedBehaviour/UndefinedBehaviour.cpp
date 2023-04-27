@@ -81,14 +81,20 @@ int UndefinedBehaviour::nonreturnTypeUB(){
     //Undefined behaviour
 }
 
+//DANGLING REFERENCE
+int &UndefinedBehaviour::getX(){
+        int x=42;
+        return x;
+    }
+
 void UndefinedBehaviour::accessDanglingReference(){
     //It is illegal to access a reference to an object that has gone out of scope or been otherwise destroyed. Such a
     //reference is said to be dangling since it no longer refers to a valid object.
-    int& var = getVar();
+    int& var = this->getX();
     std::cout << var<<std::endl;
 
-    //In this example, the local variable x goes out of scope when getX returns. (Note that lifetime extension cannot
-    //extend the lifetime of a local variable past the scope of the block in which it is defined.) Therefore varr is a dangling
+    //In this example, the local variable x goes out of scope when getx returns. (Note that lifetime extension cannot
+    //extend the lifetime of a local variable past the scope of the block in which it is defined.) Therefore var is a dangling
     //reference. This program has undefined behavior, although it may appear to work and print 42 in some cases.
 }
 
@@ -183,8 +189,8 @@ void UndefinedBehaviour::modifyingStringLiteral(){
     myStr[0] = 'H';
 
     //Another definition
-    char *myStr = const_cast<char *>("hello world");
-    myStr[0] = 'H';
+    char *myStr1 = const_cast<char *>("hello world");
+    myStr1[0] = 'H';
 }
 
 void UndefinedBehaviour::accessWrongTypeObj(){
@@ -209,7 +215,7 @@ void UndefinedBehaviour::floatingPointOverflow(){
     //standards the machine might conform to, such as IEEE 754.
     float var = 1.0;
     for (int i = 0; i < 10000; i++) {
-        x *= 10.0; // will probably overflow eventually; undefined behavior
+        var *= 10.0; // will probably overflow eventually; undefined behavior
     }
 
 }

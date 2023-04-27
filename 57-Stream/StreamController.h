@@ -3,6 +3,8 @@
 #define STREAMCONTROLLER_H
 #include <fstream> // fstream is both writing and reading from file
 #include <iostream>
+#include <iomanip>
+#include <vector>
 /*
 1)ifstream is input file stream which allows you to read the contents of a file.
 2)ofstream is output file stream which allows you to write contents to a file.

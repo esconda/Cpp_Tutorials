@@ -5,39 +5,40 @@ MemoryManagement::MemoryManagement()
 {
 }
 
-void MemoryManagement::freeStorage(){
-    //The term 'heap' is a general computing term meaning an area of memory from which portions can be allocated
-    //and deallocated independently of the memory provided by the stack
-    //Areas of memory allocated from the Free Store may live longer than the original scope in which it was allocated.
-    //Data too large to be stored on the stack may also be allocated from the Free Store.
+void MemoryManagement::freeStorage()
+{
+    // The term 'heap' is a general computing term meaning an area of memory from which portions can be allocated
+    // and deallocated independently of the memory provided by the stack
+    // Areas of memory allocated from the Free Store may live longer than the original scope in which it was allocated.
+    // Data too large to be stored on the stack may also be allocated from the Free Store.
     float *foo = nullptr;
-    *foo = new float; // Allocates memory for a float
-    float bar; // Stack allocated
+    foo = new float; // Allocates memory for a float
+    float bar;        // Stack allocated
 
-    delete foo; // Deletes the memory for the float at pF, invalidating the pointer
+    delete foo;    // Deletes the memory for the float at pF, invalidating the pointer
     foo = nullptr; // Setting the pointer to nullptr after delete is often considered good practice
-
 }
 
-void MemoryManagement::freeStorageExOne(){
- /* It's also possible to allocate fixed size arrays with new and delete, with a slightly different syntax. Array allocation is
-    not compatible with non-array allocation, and mixing the two will lead to heap corruption. Allocating an array also
-    allocates memory to track the size of the array for later deletion in an implementation-defined way. */
+void MemoryManagement::freeStorageExOne()
+{
+    /* It's also possible to allocate fixed size arrays with new and delete, with a slightly different syntax. Array allocation is
+       not compatible with non-array allocation, and mixing the two will lead to heap corruption. Allocating an array also
+       allocates memory to track the size of the array for later deletion in an implementation-defined way. */
     // Allocates memory for an array of 256 ints
     int *foo = new int[256];
     // Deletes an array of 256 ints at foo
     delete[] foo;
 
-    //C++14 added std::make_unique to the STL, changing the recommendation to favor std::make_unique or
-    //std::make_shared instead of using naked new and delete.
-
+    // C++14 added std::make_unique to the STL, changing the recommendation to favor std::make_unique or
+    // std::make_shared instead of using naked new and delete.
 }
 
-void MemoryManagement::placementNew(){
- /* There are situations when we don't want to rely upon Free Store for allocating memory and we want to use custom
-    memory allocations using new.
-    For these situations we can use Placement New, where we can tell `new' operator to allocate memory from a preallocated memory location*/
- 
+void MemoryManagement::placementNew()
+{
+    /* There are situations when we don't want to rely upon Free Store for allocating memory and we want to use custom
+       memory allocations using new.
+       For these situations we can use Placement New, where we can tell `new' operator to allocate memory from a preallocated memory location*/
+
     int a4byteInteger;
     char *a4byteChar = new (&a4byteInteger) char[8];
     /* In this example, the memory pointed by a4byteChar is 4 byte allocated to 'stack' via integer variable a4byteInteger.
@@ -51,21 +52,22 @@ void MemoryManagement::placementNew(){
     memory */
 }
 
-void void MemoryManagement::stack(){
+//STACK OPERATION
+int *pA = nullptr;
+void MemoryManagement::stackOp()
+{
+    int b = *pA;
+    pA = &b;
+}
 
-    //Data stored on the stack is only valid so long as the scope that allocated the variable is still active
-    /* int* pA = nullptr;
-    void foo() {
-        int b = *pA;
-        pA = &b;
-    }
+void MemoryManagement::stack()
+{
 
-    int main() {
-        int a = 5;
-        pA = &a;
-        foo();
-        //Undefined behavior, the value pointed to by pA is no longer in scope
-        a = *pA;
-    } */
-    
+    // Data stored on the stack is only valid so long as the scope that allocated the variable is still active
+    int a = 5;
+    pA = &a;
+    this->stackOp();
+    // Undefined behavior, the value pointed to by pA is no longer in scope
+    //a = *pA;
+    std::cout<< "Stack Operation Value A :"<< *pA << std::endl;
 }

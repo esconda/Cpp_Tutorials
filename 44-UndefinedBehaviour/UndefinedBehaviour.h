@@ -17,10 +17,7 @@ public:
     void invalidPointerArithmetic();
     int nonreturnTypeUB();
 
-    inline int& getVar(){
-        int x=42;
-        return x;
-    }
+    int &getX();
     void accessDanglingReference();
 
     void intDivisionByZero();

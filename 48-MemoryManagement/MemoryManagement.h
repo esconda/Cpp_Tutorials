@@ -14,6 +14,8 @@ public:
     void freeStorage();
     void freeStorageExOne();
     void placementNew();
+
+    void stackOp();
     void stack();
    
 };

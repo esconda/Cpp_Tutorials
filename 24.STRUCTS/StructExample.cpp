@@ -30,7 +30,6 @@ void StructExamplePack::concatToIntVar(){
 		this->concatVariable = ((concatVariable << 8) + tData) & 0xFFFF;
 		
 	}
-	std::cout<< std::bitset<8>(this->concatVariable) <<std::endl;
 }
 
 void StructExamplePack::clearPackage(std::vector<char>& pRawDataPack) {
