@@ -26,6 +26,7 @@ public:
     //need to rely upon std::tie() or do any manual tuple unpacking:)
     //Map return only key and value, for multiple value binding check structural bindings
     void mapBaseReturning();
+    std::pair<std::string,bool> pairBaseMapReturning(std::string val1,bool val2);
 
     //A struct can be used to bundle multiple return values:
     typedef struct MathOp

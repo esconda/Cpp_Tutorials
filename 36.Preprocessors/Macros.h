@@ -23,8 +23,10 @@ public:
    void variadicFunctionMacro();
    void preprocessorOperatorsFirstEx();
    void preprocessorOperatorSecondEX();
+   void preprocessorOpVarDefine();
    void preprocessorErrorMessage();
    void variableMacro();
+
 
 private:
    std::unique_ptr<IncludeGuards> mGuards;

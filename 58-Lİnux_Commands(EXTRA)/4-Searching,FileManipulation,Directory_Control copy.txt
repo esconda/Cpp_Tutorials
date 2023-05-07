@@ -1,0 +1,22 @@
+Searching for files by patterns in name/contents
+find /var/www -name '*.css'  -> Find files by name
+grep font /var/www/html/style.css, grep -R font /var/www/html/ -> Find files containing text
+
+File Manipulation
+touch myFile -> Create an empty text file called myFile 
+mv myFile myFirstFile -> Rename myFile to myFirstFile
+cat myFirstFile -> View the contents of a file
+less myFirstFile -> View the content of a file with pager (one screenful at a time)
+head myFirstFile -> View the first several lines of a file 
+tail myFirstFile -> View the last several lines of a file
+vi myFirstFile -> Edit a file 
+ls -> See what files are in your current working directory
+mkdir myFirstDirectory -> Create an empty directory called myFirstDirectory
+mkdir -p src/myFirstDirectory -> Create multi path directory: (creates two directories, src and myFirstDirectory)
+mv myFirstFile myFirstDirectory/ -> Move the file into the directory
+user@linux-computer:~$ mv myFirstFile secondFileName -> You can also rename the file
+cd myFirstDirectory -> Change the current working directory to myFirstDirectory
+rm myFirstFile -> Delete a file
+cd .. -> Move into the parent directory (which is represented as ..):
+
+

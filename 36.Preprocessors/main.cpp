@@ -23,6 +23,7 @@ int main()
     macros.variadicFunctionMacro();
     macros.preprocessorOperatorsFirstEx();
     macros.preprocessorOperatorSecondEX();
+    macros.preprocessorOpVarDefine();
     macros.preprocessorErrorMessage();
     macros.variableMacro();
     

@@ -43,6 +43,8 @@ expand them all in place of a special "Varargs" parameter, __VA_ARGS__ */
     VARIADIC(std::cout,"Variable Number: "<<20);
 }
 
+
+
 void Macros::preprocessorOperatorsFirstEx(){
   /*   # operator or stringizing operator is used to convert a Macro parameter to a string literal. It can only be used with
 the Macros having arguments. */
@@ -60,6 +62,14 @@ void Macros::preprocessorOperatorSecondEX(){
     ANOTHERPRINT(Y);
     std::cout<<"----------------------------"<<std::endl;
 
+}
+
+void Macros::preprocessorOpVarDefine(){
+    //You can concanate variable name decleration with ## operator with macros
+    #define IntvarX(param,x) int param##x;
+    IntvarX(myVar,First);
+    myVarFirst = 30;
+    std::cout<<"Macro Prepared Variable is: "<<myVarFirst<<std::endl;
 }
 
 void Macros::preprocessorErrorMessage(){

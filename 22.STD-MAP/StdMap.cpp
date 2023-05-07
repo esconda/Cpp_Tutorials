@@ -129,6 +129,7 @@ void StdMap::deletingElemenets(){
         std::cout<<"Initialized Elements : "<< mapVar.first << " : " << mapVar.second<<std::endl;
     }
     mmp.clear(); //delete elements in mmp
+
     std::cout<<"Map Size :"<<mmp.size()<<std::endl;
     //------------------------------------------------------------------------------------------
     

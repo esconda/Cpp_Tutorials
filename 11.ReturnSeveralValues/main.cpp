@@ -16,6 +16,12 @@ int main()
     //-------------------------------------------------------
     //Map-StructuredBindings
      returnMultiVal.mapBaseReturning();
+     //Map StructuredBindings another methode
+     std::map<std::string,bool> mapVar{returnMultiVal.pairBaseMapReturning("Var1",true),returnMultiVal.pairBaseMapReturning("Var1",false)};
+     mapVar.insert(returnMultiVal.pairBaseMapReturning("Var3",true));
+     std::cout<<"Map Returning Var1 : "<<std::boolalpha<<mapVar["Var1"]<<std::endl;
+     std::cout<<"Map Returning Var1 : "<<std::boolalpha<<mapVar["Var2"]<<std::endl;
+     std::cout<<"Map Returning Var1 : "<<std::boolalpha<<mapVar["Var3"]<<std::endl;
 
     //---------------Struct base returning-------------------
     ReturnMultiVal::mathOp tstructOp = returnMultiVal.structBaseReturning(50,30,40);

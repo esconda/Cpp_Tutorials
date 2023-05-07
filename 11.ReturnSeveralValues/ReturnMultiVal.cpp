@@ -60,6 +60,12 @@ std::pair<int,int> ReturnMultiVal::pairBaseReturning(int val1,int val2){
     return std::make_pair(add,mul);
 }
 
+std::pair<std::string,bool> ReturnMultiVal::pairBaseMapReturning(std::string val1,bool val2){
+    std::string key = val1;
+    bool value = val2;
+    return std::make_pair(key,value);
+}
+
 
 std::array<int,4> ReturnMultiVal::arrayBaseReturning(int val1, int val2){
     int addition = val1 + val2;
