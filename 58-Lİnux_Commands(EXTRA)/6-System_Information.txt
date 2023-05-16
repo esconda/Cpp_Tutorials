@@ -1,0 +1,45 @@
+
+Statistics about CPU, Memory, Network and Disk (I/O operations)
+* mpstat 2 10 -> To get processors related statistics you can use mpstat command but with some options it will provide better visibility
+* vmstat 2 10 -> RAM but to see all statistic including I/O operations
+* iostat -kx 2 -> information about your disk operations in real time you can utilise iostat
+* lscpu -> 
+
+
+Network
+* netstat -ntlp -> open TCP sockets
+* netstat -nulp -> open UDP sockets
+* netstat -nxlp -> open Unix sockets
+* sudo iftop -> you can find useful monitoring to see network traffic in real time
+
+
+lscpu
+lshw | grep cpu
+
+List Hardware
+lshw is a small tool to extract detailed information on the hardware configuration of the machine. 
+* sudo lshw | less (or more)
+* sudo lshw -html > myhardware.html
+* sudo lshw -xml > myhardware.xml
+* lspci -tv -> To show PCI info
+* lsusb -tv -> To see USB info
+* dmidecode -q | less -> To display BIOS information
+* hdparm -i /dev/sda -> To see specific information about disk (disk sda in example) you can use
+* smartctl -A /dev/sda | grep Power_On_Hours -> How long has this disk (system) been powered on in total
+* hdparm -tT /dev/sda -> Do a read speed test on disk sda
+* badblocks -s /dev/sda -> Test for unreadable blocks on disk sda
+
+Find CPU model/speed information
+cat /proc/cpuinfo
+grep -c processor /proc/cpuinfo
+
+Process monitoring and information gathering
+* ps -e -o pid,args --forest -> List processes in a hierarchy
+* ps -e -o pcpu,cpu,nice,state,cputime,args --sort pcpu | sed '/^ 0.0 /d' -> List processes sorted by % cpu usage
+* ps -e -orss=,args= | sort -b -k1,1n | pr -TW$COLUMNS -> List processes sorted by mem (KB) usage.
+* ps -C firefox-bin -L -o pid,tid,pcpu,state -> List all threads for a particular process
+* lsof ~ -> Or based on path find out list processes that have specified path open
+* top -> Most commonly known tool for dynamic monitoring
+* htop -d 5 -> Still there are more advance options that can be considered and installed as top replacement
+* atop
+* sudo iotop

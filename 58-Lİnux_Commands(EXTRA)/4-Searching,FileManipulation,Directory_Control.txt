@@ -19,4 +19,18 @@ cd myFirstDirectory -> Change the current working directory to myFirstDirectory
 rm myFirstFile -> Delete a file
 cd .. -> Move into the parent directory (which is represented as ..):
 
+Print Information of the currentSystem
+uname [OPTION]
+-s, --kernel-name Print the kernel name.
+-n, --nodename Print the network node hostname.
+-r, --kernel-release Print the kernel release.
+-v, --kernel-version Print the kernel version.
+-m, --machine Print the machine hardware name.
+-p, --processor Print the processor type, or "unknown".
+-i, --hardware-platform Print the hardware platform, or "unknown".
+-o, --operating-system Print the operating system.
+--help Display a help message, and exit.
+--version Display version information, and exit.
+
+
 

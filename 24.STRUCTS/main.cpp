@@ -7,6 +7,8 @@ int main()
     
     std::unique_ptr<StructExample> structExmp = std::make_unique<StructExample>();
 
+    structExmp.get()->myVariableProcess();
+
     //PACK CONCATANATION
     StructExample::PackConcenationProcess tconcatVariables;
     char pack1 = 0x01;

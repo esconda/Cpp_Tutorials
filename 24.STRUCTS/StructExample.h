@@ -20,7 +20,7 @@ public:
     StructExample &operator=(const StructExample &ruleOfThree) = delete; // III. COPY ASSIGNMENT
     ~StructExample() = default;
 
-    
+    void myVariableProcess();
     
     typedef struct PackConcenationProcess {
 		PackConcenationProcess() {
@@ -34,6 +34,12 @@ public:
 		void concatToIntVar();
 		void clearPackage(std::vector<char>& pRawDataPack);
 	}PackConcenationProcess;
+
+	typedef struct{
+		int myVariable1 = 20;
+		int myVariable2 = 30;
+		int myVariable3 = 50;
+	} MyVarStruct;
     
    
 };
