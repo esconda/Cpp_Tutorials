@@ -1,0 +1,14 @@
+ALL COMMANDS
+* ver -> This batch command shows the version of MS-DOS you are using.
+* assoc -> This is a batch command that associates an extension with a file type (FTYPE), displays existing associations, or deletes an association.
+* cd -> This batch command helps in making changes to a different directory, or displays the current directory.
+* cls -> This batch command clears the screen.
+* copy [source] [destination] -> This batch command is used for copying files from one location to the other.
+* del [filename] -> This batch command deletes files and not directories.
+* dir -> This batch command lists the contents of a directory.
+* date -> This batch command help to find the system date.
+* echo -> This batch command displays messages, or turns command echoing on or off.
+* exit -> This batch command exits the DOS console.
+* md [new directory name] -> This batch command creates a new directory in the current location
+* move [source] [destination] -> This batch command moves files or directories between directories.
+* 

@@ -1,0 +1,61 @@
+This document covers TCP/IP networking, network administration and system configuration basics. Linux can
+support multiple network devices. The device names are numbered and begin at zero and count upwards. For
+example, a computer with two NICs will have two devices labeled eth0 and eth1.
+
+1)Local DNS resolution
+* /etc/hosts -> contains a list of hosts that are to be resolved locally(not by DNS)
+
+2)Configure DNS servers for domain name resolution
+*  /etc/resolv.conf -> contains a list of DNS servers for domain name resolution
+* dig google.com @your.dns.server.com +short -> In case internal DNS server you can validate if this server resolve DNS names properly using dig command
+
+3)See and manipulate routes
+* route -> Displays list or routes and also resolves host names
+* route -n -> Displays list of routes without resolving host names for faster results
+
+Add/Delete route
+* add or del -> Add or delete a route
+* -host x.x.x.x -> Add route to a single host identified by the IP address
+* -net x.x.x.x -> Add route to a network identified by the network address
+* gw x.x.x.x -> Specify the network gateway
+* netmask x.x.x.x -> Specify the network netmask
+* default -> Add a default route
+
+Examples:
+* add route to a host $ route add -host x.x.x.x eth1
+* add route to a network $ route add -net 2.2.2.0 netmask 255.255.255.0 eth0
+* Alternatively, you could also use cidr format to add a route to network route add -net 2.2.2.0/24 eth0
+* add default gateway $ route add default gw 2.2.2.1 eth0
+* delete a route $ route del -net 2.2.2.0/24
+
+4)Configure a hostname for some other system on your network
+* sudo cat 192.168.1.44 remote_pc
+Then you can make that ping just by:
+* ping remote_pc
+
+5)Interface details
+* ifconfig -a -> List all the interfaces available on the machine
+* ifconfig eth0 -> List the details of a specific interface
+* ethtool eth0 -> Ethtool - query the network driver and hardware settings
+* ip { link | ... | route | macsec } -> ip - show / manipulate routing, devices, policy routing and tunnels
+* ip link show -> List network interfaces
+* ip link set dev eth0 name wan -> Rename interface eth0 to wan
+* ip link set dev eth0 up -> Bring interface eth0 up (or down)
+* ip addr show -> List addresses for interfaces
+* ip addr add 1.2.3.4/24 brd + dev eth0 -> Add (or del) ip and mask (255.255.255.0)
+
+6)Adding IP to an interface
+An IP address to an interface could be obtained via DHCP or Static assignment
+DHCP If you are connected to a network with a DHCP server running, dhclient command can get an IP address for
+your interface
+* dhclient <interface>
+or alternatively, you could make a change to the /etc/network/interfaces file for the interface to be brought up
+on boot and obtain DHCP IP
+auto eth0
+iface eth0 inet dhcp
+
+Static configuration(Permanent Change) using /etc/network/interfaces file.if you want to statically configure the interface settings(permanent change), you could do so in the
+/etc/network/interfaces file.
+
+* ifconfig <interface> <ip-address>/<mask> up -> A static IP address could be added to an interface using the ifconfig utility as follows
+* ifconfig eth0 10.10.50.100/16 up
