@@ -50,6 +50,12 @@ void Casting::dynamicCastEx()
  run-time check and failure is recoverable instead of producing undefined behaviour. In the pointer case, a null
  pointer is returned upon failure. In the reference case, an exception is thrown upon failure of type std::bad_cast
  (or a class derived from std::bad_cast) */
+
+/* Purpose: dynamic_cast is used specifically for performing safe type conversions within polymorphic class hierarchies. 
+         It is primarily used with pointers or references to base and derived classes in the context of inheritance.
+
+Type Safety: dynamic_cast performs runtime type checking, ensuring that the conversion is valid based on the actual runtime types of objects involved. 
+             It returns a null pointer or throws a std::bad_cast exception if the conversion is not possible. */
     struct Base
     {
         virtual ~Base();
@@ -66,6 +72,11 @@ void Casting::dynamicCastEx()
 
 void Casting::reinterpretCastEx()
 {
+/* Purpose: reinterpret_cast is used for low-level type conversions, 
+            typically between unrelated pointer types or when you need to treat a block of memory as a different type. 
+            It is the most powerful but also the riskiest casting operator because it bypasses C++'s type safety checks.
+   Type Safety: reinterpret_cast offers no type safety checks. 
+                It allows you to convert pointers from one type to another without regard for their actual structure or relationship. */
     //A pointer(resp.reference) to an object type can be converted to a pointer(resp.reference) to any other object type using reinterpret_cast.This does not call any constructors or conversion functions.int x = 42;
     char *p = static_cast<char *>(&x);      // error: static_cast cannot perform this conversion
     char *p = reinterpret_cast<char *>(&x); // OK

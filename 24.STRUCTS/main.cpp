@@ -18,8 +18,17 @@ int main()
 	tconcatVariables.addPackage(pack2);
     std::cout << "First Pack : " << std::bitset<8>(tconcatVariables.mDstPack[0])<< std::endl;
 	std::cout << "Second Pack : " << std::bitset<8>(tconcatVariables.mDstPack[1])<< std::endl;
-	std::cout << "Conatanated Variable : " << tconcatVariables.concatVariable;
+	std::cout << "Conatanated Variable : " << tconcatVariables.concatVariable<<std::endl;
+    std::cout << " "<< std::endl;
     //------------------------
-   
+
+    //Baykar uav ınfo
+    std::cout<< "### BAYKAR UAV INFOS ###: "<<std::endl;
+    std::cout<< "UAV NAME: "<<structExmp.get()->baykarUavInfo.name<<std::endl;
+    std::cout<< "UAV TYPE: "<<structExmp.get()->baykarUavInfo.type<<std::endl;
+    std::cout<< "UAV COMPANY: "<<structExmp.get()->baykarUavInfo.company<<std::endl;
+    std::cout<< "########################: "<<std::endl;
+    std::cout << " "<< std::endl;
+    //---------------
    //enumExample.iterator_over_enum();
 }

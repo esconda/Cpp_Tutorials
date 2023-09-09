@@ -8,6 +8,7 @@
 #include <vector>
 #include <memory>
 #include <bitset>
+#include "StructBasePackages.h"
 //Author : Burak Dogancay
 
 class StructExample
@@ -21,6 +22,7 @@ public:
     ~StructExample() = default;
 
     void myVariableProcess();
+	BaykarUavInfo baykarUavInfo;
     
     typedef struct PackConcenationProcess {
 		PackConcenationProcess() {

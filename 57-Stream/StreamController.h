@@ -35,6 +35,30 @@ public:
     void ifStreamExample();
     void isStreamExample();
 
+    //Data serialize and deserialize Example
+    typedef struct UAVVehicles{
+
+      char *uavName;
+      char *uavCompanyName;
+      int uavCount;
+      int uavSerialNo;
+
+      //Brace-enclosed initializer list
+      UAVVehicles(char *uavName, char* uavCompanyName, int uavCount, int uavSerialNo): 
+      uavName(uavName),
+      uavCompanyName(uavCompanyName),
+      uavCount(uavCount),
+      uavSerialNo(uavSerialNo) {}
+
+      //Zero initialized
+      UAVVehicles():uavName(),uavCompanyName(),uavCount(),uavSerialNo(){}
+
+   
+    }uavVehicles;
+
+    void dataSerialize(const uavVehicles& data, const std::string& fileName);
+    void dataDeserialize(uavVehicles& data, const std::string& fileName);
+
 };
 
 #endif 

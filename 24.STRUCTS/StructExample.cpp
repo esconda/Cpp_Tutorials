@@ -16,6 +16,7 @@ void StructExample::myVariableProcess(){
 	std::cout<<"Sum of The Variables : "<<sumVars<<std::endl;
 	std::cout<<"Extraction of the variables : "<< extractVars << std::endl;
 	std::cout<<"----------------------------------------"<<std::endl; 
+	std::cout << " "<< std::endl;
 	}
 
 void StructExamplePack::addPackage(char pDataPack) {

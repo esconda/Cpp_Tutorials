@@ -65,7 +65,7 @@ void StreamController::ifStreamExample()
 
 void StreamController::osStreamExample()
 {
-
+    //WRITE TO FILE 
     // We can use different variable types to serialize them with ostream and ofstream
     // Note that the << operator automatically converts the values into their string representations and inserts them into the stream.
     // The output file will contain:
@@ -146,5 +146,27 @@ void StreamController::isStreamExample()
         }
    }
    //First Methode
-
 }
+
+void StreamController::dataSerialize(const uavVehicles& data, const std::string& fileName){
+    std::ofstream serializedData(fileName,std::ios::binary);
+
+    if (!serializedData) {
+        std::cerr << "Error opening file for writing." << std::endl;
+        return;
+    }
+
+    serializedData.write(reinterpret_cast<const char *>(&data),sizeof(uavVehicles));
+    serializedData.close();
+   }
+
+void StreamController::dataDeserialize(uavVehicles& data, const std::string& fileName){
+    std::ifstream ifs(fileName, std::ios::binary);
+    if (!ifs) {
+        std::cerr << "Error opening file for reading." << std::endl;
+        return;
+    }
+
+    ifs.read(reinterpret_cast<char*>(&data), sizeof(uavVehicles));
+    ifs.close();
+  }
