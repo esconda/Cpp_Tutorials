@@ -24,7 +24,7 @@ TypeKeyword &TypeKeyword::operator=(const TypeKeyword &ruleOfThree)
 }
 
 void TypeKeyword::enumOperation(){
-    Direction d = UP;
+    Direction d = Direction::UP;
 
     std::cout<<"Enum type is identified and initial value is : "<< d<<std::endl;
 

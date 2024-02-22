@@ -473,6 +473,26 @@ void VectorDefinition::correctWayOfVector()
     }
 }
 
+void VectorDefinition::correctwayOfVectorWithShrink()
+{
+    std::vector<int> vector;
+    
+    vector.reserve(20);
+    std::cout<<"Capacity of The Vector after reserve : "<<vector.capacity()<<std::endl;
+
+    for(int i=0;i<20;i++)
+    {
+        vector.emplace_back(i);
+    }
+
+    vector.clear();
+    std::cout<<"Capacity of The Vector after clear : "<<vector.capacity()<<std::endl;
+
+    vector.shrink_to_fit();
+    std::cout<<"Capacity of The Vector after shrink to fit : "<<vector.capacity()<<std::endl;
+    std::cout<<""<<std::endl;
+}
+
 void VectorDefinition::copyOpOfTheVector(){
     std::cout<<"*****COPY PART OF THE VECTOR****"<<std::endl;
 

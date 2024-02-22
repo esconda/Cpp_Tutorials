@@ -149,7 +149,8 @@ void StreamController::isStreamExample()
 }
 
 void StreamController::dataSerialize(const uavVehicles& data, const std::string& fileName){
-    std::ofstream serializedData(fileName,std::ios::binary);
+    std::ofstream serializedData;
+    serializedData.open(fileName, std::ios::binary);
 
     if (!serializedData) {
         std::cerr << "Error opening file for writing." << std::endl;

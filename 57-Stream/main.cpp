@@ -12,7 +12,7 @@ int main(int argc, char **argv)
 
    //Serialize Data and create BinaryData.bin
    const std::string filename = "57-Stream/BinaryData.bin";
-   StreamController::UAVVehicles originalData = {(char*)"Tb2",(char*)"Baykar",50,152345};
+   StreamController::UAVVehicles originalData = {(char*)"Tb2",(char*)"Baykar",50,23789};
    streamController.get()->dataSerialize(originalData,filename);
 
    //Deserialize Data and read BinaryData.bin

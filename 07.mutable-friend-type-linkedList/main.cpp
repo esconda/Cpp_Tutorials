@@ -19,12 +19,12 @@ int main()
 
     int variable = 20;
 
-    friendcall.friend_function();
-    friendcall.write_private_variables();
+    /* friendcall.friend_function();
+    friendcall.write_private_variables(); */
 
     //Type keywords like class,enum,struct
     typedefKeyword.enumOperation();
-    typedefKeyword.enumClassOperation();
+     typedefKeyword.enumClassOperation();
     typedefKeyword.structOperation();
     typedefKeyword.structOperation2();
     typedefKeyword.unionOperation();
@@ -42,6 +42,6 @@ int main()
     linkedList.insertAtEnd(20);
     linkedList.insertAtEnd(35);
     linkedList.insertAtEnd(45);
-    linkedList.print();
+    linkedList.print(); */
 
 }

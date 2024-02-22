@@ -18,10 +18,16 @@ int main(){
     //vectorDefinition.vectorStructArray();
     //vectorDefinition.vectorClassAproach();
     //vectorDefinition.correctWayOfVector();
-    vectorDefinition.copyOpOfTheVector();
+    //vectorDefinition.copyOpOfTheVector();
+
+    vectorDefinition.correctwayOfVectorWithShrink();
+    vectorDefinition.correctwayOfVectorWithShrink();
+    vectorDefinition.correctwayOfVectorWithShrink();
 
     //listDefinition.listTransferOpStruct();
     //listdefinition.listIteratorOp();
     //listdefinition.listDynamicAllocation();
+
+
     
 }   
