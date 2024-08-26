@@ -203,7 +203,14 @@ void CStdioOperations::fgetcFunc(std::string fileName)
    }
    fclose(pFile); // Close file
 }
+void CStdioOperations::fgetsFunc(std::string fileName)
+{
 
+}
+void CStdioOperations::fputcFunc(std::string fileName)
+{
+
+}
 void CStdioOperations::fgetposFunc(std::string fileName)
 {
    FILE *pFile;
